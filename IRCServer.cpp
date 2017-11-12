@@ -303,6 +303,8 @@ IRCServer::initialize()
 bool
 IRCServer::checkPassword(int fd, const char * user, const char * password) {
 	// Here check the password
+	
+	
 	return true;
 }
 
