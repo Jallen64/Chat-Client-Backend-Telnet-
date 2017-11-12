@@ -269,7 +269,7 @@ void
 IRCServer::initialize()
 {
 	// Open password file
-	passStream.open(password);
+	passStream.open("password.txt");
 	// Initialize users in room
 
 	// Initalize message list
