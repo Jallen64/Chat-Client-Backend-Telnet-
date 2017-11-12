@@ -334,6 +334,11 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
         	write(fd, msg, strlen(msg));
 	}
 
+	}else{
+	
+		userVec.push_back(user);
+		userVec.push_back(password);
+
 	}		
 
 	const char * msg =  "OK\r\n";
