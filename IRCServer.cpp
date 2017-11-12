@@ -333,6 +333,7 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 		const char * msg =  "DENIED\r\n";
         	write(fd, msg, strlen(msg));
 		return;
+		}
 	}
 	
 	userVec.push_back(user);
