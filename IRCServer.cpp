@@ -326,8 +326,14 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	
 	//Checks to see if username is already being used
 	
-	int i;
+	for(int x =0; x<userVec.Size();x++){
 	
+		cout << userVec[x] << endl;
+
+	}
+	
+	int i;
+		
 	for(i=0; i<userVec.size();i++){
 		
 	if(userVec[i].compare(user) ==0){
