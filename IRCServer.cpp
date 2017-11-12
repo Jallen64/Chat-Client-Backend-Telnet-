@@ -37,8 +37,11 @@ const char * usage =
 #include "IRCServer.h"
 
 using namespace std;
+
 int QueueLength = 5;
 
+vector<string> userVec;
+vector<string> passVec;
 //test
 
 
@@ -271,7 +274,25 @@ IRCServer::initialize()
 	fstream passStream;
 	passStream.open("password.txt");
 
-	string input;
+	if(passStream.is_open()){
+
+		string input;
+		int parity=0;
+	
+		while(getline(passStream,input)){
+			
+
+			if(parity%2 = 0){
+				userVec.push_back(input);			
+			}
+			else{
+				passVec.push_back(input);
+			}
+			parity++; 
+		}
+
+	}
+	passStream.close();
 	// Initialize users in room
 
 	// Initalize message list
