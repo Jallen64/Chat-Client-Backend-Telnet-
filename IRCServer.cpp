@@ -29,6 +29,10 @@ const char * usage =
 #include <string.h>
 #include <stdio.h>
 #include <time.h>
+#include <sstream>
+#include <iostream>
+#include <fstream>
+#include <vector>
 
 #include "IRCServer.h"
 
@@ -261,9 +265,8 @@ void
 IRCServer::initialize()
 {
 	// Open password file
-	FILE*file;
-	file=fopen("password.txt","w+");
-
+	fstream passStream;
+	passStream.open(password.txt);
 	// Initialize users in room
 
 	// Initalize message list
