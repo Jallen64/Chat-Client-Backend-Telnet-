@@ -36,6 +36,7 @@ const char * usage =
 
 #include "IRCServer.h"
 
+using namespace std;
 int QueueLength = 5;
 fstream passStream;
 
