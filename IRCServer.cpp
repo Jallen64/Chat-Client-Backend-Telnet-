@@ -304,15 +304,14 @@ bool
 IRCServer::checkPassword(int fd, const char * user, const char * password) {
 	// Here check the password
 	
-	int i =0;
+	int i;
 	for (i=0; i < userVec.size();i++){
 	
 		if( (userVec[i].compare(user) ==0 ) && (passVec[i].compare(password) ==0)){
-		
+	
 			return true;
-		
+	
 		}
-
 	}
 		
 	return false;
@@ -322,6 +321,10 @@ void
 IRCServer::addUser(int fd, const char * user, const char * password, const char * args)
 {
 	// Here add a new user. For now always return OK.
+	
+	//Checks to see if username is already being used
+	
+		
 
 	const char * msg =  "OK\r\n";
 	write(fd, msg, strlen(msg));
