@@ -38,7 +38,7 @@ const char * usage =
 
 using namespace std;
 int QueueLength = 5;
-fstream passStream;
+//fstream passStream;
 
 //test
 
@@ -269,6 +269,7 @@ void
 IRCServer::initialize()
 {
 	// Open password file
+	fstream passStream;
 	passStream.open("password.txt");
 	// Initialize users in room
 
