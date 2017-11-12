@@ -262,7 +262,7 @@ IRCServer::initialize()
 {
 	// Open password file
 	FILE*file;
-	file=fopen(password.txt,"w+");
+	file=fopen(password,"w+");
 
 	// Initialize users in room
 
