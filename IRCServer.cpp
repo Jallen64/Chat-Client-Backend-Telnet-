@@ -278,11 +278,12 @@ IRCServer::initialize()
 
 		string input;
 		int parity=0;
-	
+
+		// Initialize users in room
 		while(getline(passStream,input)){
 			
 
-			if(parity%2 = 0){
+			if(parity%2 == 0){
 				userVec.push_back(input);			
 			}
 			else{
@@ -293,9 +294,9 @@ IRCServer::initialize()
 
 	}
 	passStream.close();
-	// Initialize users in room
 
 	// Initalize message list
+	vector<string> messages;
 
 }
 
