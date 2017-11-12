@@ -37,8 +37,11 @@ const char * usage =
 #include "IRCServer.h"
 
 int QueueLength = 5;
+fstream passStream;
 
 //test
+
+
 
 int
 IRCServer::open_server_socket(int port) {
@@ -265,7 +268,6 @@ void
 IRCServer::initialize()
 {
 	// Open password file
-	fstream passStream;
 	passStream.open(password.txt);
 	// Initialize users in room
 
