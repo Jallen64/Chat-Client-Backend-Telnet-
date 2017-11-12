@@ -342,10 +342,12 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	userVec.push_back(user);
 	userVec.push_back(password);
 
-	ofstream writer;
+	writer.open("password.txt");
 	
+		 writer << user + " \n";
+   		 writer << password+ "\n";
 
-		
+	writer.close();
 
 	const char * msg =  "OK\r\n";
 	write(fd, msg, strlen(msg));
