@@ -40,6 +40,9 @@ using namespace std;
 
 int QueueLength = 5;
 
+fstream reader;
+ofstream writer;
+
 vector<string> userVec;
 vector<string> passVec;
 //test
@@ -271,16 +274,15 @@ void
 IRCServer::initialize()
 {
 	// Open password file
-	fstream passStream;
-	passStream.open("password.txt");
+	reader.open("password.txt");
 
-	if(passStream.is_open()){
+	if(reader.is_open()){
 
 		string input;
 		int parity=0;
 
 		// Initialize users in room
-		while(getline(passStream,input)){
+		while(getline(reader,input)){
 			
 
 			if(parity%2 == 0){
@@ -293,7 +295,7 @@ IRCServer::initialize()
 		}
 
 	}
-	passStream.close();
+	reader.close();
 
 	// Initalize message list
 	vector<string> messages;
@@ -336,8 +338,14 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 		}
 	}
 	
+	//add user and pass to respective vectors
 	userVec.push_back(user);
-	userVec.push_back(password);	
+	userVec.push_back(password);
+
+	ofstream writer;
+	
+
+		
 
 	const char * msg =  "OK\r\n";
 	write(fd, msg, strlen(msg));
