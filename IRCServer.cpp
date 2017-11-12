@@ -324,7 +324,17 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	
 	//Checks to see if username is already being used
 	
+	int i;
+	
+	for(i=0; i<userVec.size();i++){
 		
+	if(userVec[i].compare(user) ==0){
+
+		const char * msg =  "DENIED\r\n";
+        	write(fd, msg, strlen(msg));
+	}
+
+	}		
 
 	const char * msg =  "OK\r\n";
 	write(fd, msg, strlen(msg));
