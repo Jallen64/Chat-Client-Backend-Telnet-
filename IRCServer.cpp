@@ -304,8 +304,18 @@ bool
 IRCServer::checkPassword(int fd, const char * user, const char * password) {
 	// Here check the password
 	
+	int i =0;
+	for (i=0; i < userVec.size();i++){
 	
-	return true;
+		if( (userVec[i].compare(user) ==0 ) && (passVec[i].compare(password) ==0)){
+		
+			return true;
+		
+		}
+
+	}
+		
+	return false;
 }
 
 void
