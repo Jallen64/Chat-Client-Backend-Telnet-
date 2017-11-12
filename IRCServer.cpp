@@ -344,7 +344,8 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 
 	writer.open("password.txt");
 	
-	writer << user << '\n';	
+	writer << user << '\n';
+	writer << password << '\n';	
 
 	writer.close();
 
