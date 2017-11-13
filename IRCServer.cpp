@@ -475,7 +475,7 @@ IRCServer::createRoom(int fd, const char * user, const char * password, const ch
 	r.name = str;
 	
 	cout<<"Room Name Is:"<<r.name<<endl;
-	rooms.push_back(r);
+	roomMap[str] = r;
 
 	const char * msg =  "OK\r\n";
 	write(fd, msg, strlen(msg));
