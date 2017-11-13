@@ -413,7 +413,7 @@ IRCServer::createRoom(int fd, const char * user, const char * password, const ch
 	int i;
 	string str(args);
 
-	for(i=0; i<rooms.size();i++){
+	/*for(i=0; i<rooms.size();i++){
 
 		if(rooms[i].name.compare(str)){
 
@@ -422,12 +422,13 @@ IRCServer::createRoom(int fd, const char * user, const char * password, const ch
 
 			return;
 		}
-	}
+	}*/
 
 	struct ROOM r;
 
 	r.name = str;
-
+	
+	cout<<"Room Name Is:"<<r.name<<endl;
 	rooms.push_back(r);
 
 	const char * msg =  "OK\r\n";
@@ -452,6 +453,8 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 
 			rooms[i].guestVec.push_back(str);
 
+			const char * msg =  "OK\r\n";
+			write(fd, msg, strlen(msg));
 			return;
 
 		}
@@ -459,6 +462,8 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 
 
 	}
+	const char * msg =  "DENIED\r\n";
+	write(fd, msg, strlen(msg));
 
 
 }
