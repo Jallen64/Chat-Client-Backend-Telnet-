@@ -301,6 +301,7 @@ IRCServer::processRequest( int fd )
 void
 IRCServer::initialize()
 {
+
 	// Open password file
 	reader.open("password.txt");
 
