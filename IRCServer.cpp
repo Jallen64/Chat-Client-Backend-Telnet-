@@ -584,7 +584,7 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
         
 		string s;
 		
-		s= it->second.guestVec[i] + "/r/n";
+		s= it->second.guestVec[i] + "\r\n";
 
 		const char *msg = s.c_str();
 
