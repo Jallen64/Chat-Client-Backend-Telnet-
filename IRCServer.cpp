@@ -545,9 +545,9 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 	}
 	//given size of specificed room vector, prints all users in room
 	int i;
-	for(i=0; i < rooms.size();i++){
+	for(i=0; i < target.guestVec.size();i++){
 
-		string s = rooms[i].guestVec[i];
+		string s = target.guestVec[i];
 		const char *msg = s.c_str();
 		write(fd, msg, strlen(msg));
 
