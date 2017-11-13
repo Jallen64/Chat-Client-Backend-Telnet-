@@ -422,6 +422,7 @@ IRCServer::createRoom(int fd, const char * user, const char * password, const ch
 
 		return;
 	}
+}
 
 	struct ROOM r;
 
@@ -431,6 +432,7 @@ IRCServer::createRoom(int fd, const char * user, const char * password, const ch
 
 	const char * msg =  "OK\r\n";
 	write(fd, msg, strlen(msg));
+
 
 }
 
