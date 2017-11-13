@@ -411,10 +411,6 @@ IRCServer::checkPassword(int fd, const char * user, const char * password) {
 void
 IRCServer::addUser(int fd, const char * user, const char * password, const char * args)
 {
-	// Here add a new user. For now always return OK.
-	
-	//Checks to see if username is already being used
-
 	int i;
 	for(i=0; i<userVec.size();i++){
 
@@ -429,91 +425,32 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 
 	string userS(user);
 	string passS(password);
-	//add user and pass to respective vectors
+	
 	userVec.push_back(userS);
 	passVec.push_back(passS);
 
-	//Writes user and pass to the passwords.txt
-	/*writer.open("password.txt");
-
-	writer << user << '\n';
-	writer << password << '\n';	
-
-	writer.close();
-*/
 	const char * msg =  "OK\r\n";
 	write(fd, msg, strlen(msg));
 	
-	 for(i=0; i<userVec.size();i++){
-	
-		cout<<"Users: " << userVec[i] <<endl;
-	
-        }
 	return;		
 }
 
 	void
 IRCServer::createRoom(int fd, const char * user, const char * password, const char * args)
 {
-
-	int i;
-	string str(args);
-
-
-	/*for(i=0; i<rooms.size();i++){
-
-		if(rooms[i].name.compare(str)){
-
-			const char * msg =  "DENIED\r\n";
-			write(fd, msg, strlen(msg));
-
-			return;
-		}
-	}*/
-
 	struct ROOM r;
 
 	r.name = str;
-	
-	cout<<"Room Name Is:"<<r.name<<endl;
 	roomMap[str] = r;
 
 	const char * msg =  "OK\r\n";
 	write(fd, msg, strlen(msg));
-	
-
 }
 
 
 	void
 IRCServer::enterRoom(int fd, const char * user, const char * password, const char * args)
 {
-	/*
-	int i;
-	string str(args);
-
-	for(i=0; i < rooms.size();i++){
-
-		if (rooms[i].name.compare(str) == 0){
-			cout << "Room name is: " << rooms[i].name << endl;
-			string str(user);
-
-			rooms[i].guestVec.push_back(str);
-
-			const char * msg =  "OK\r\n";
-			write(fd, msg, strlen(msg));
-			return;
-
-		}
-
-
-
-	}
-	
-	const char * msg =  "DENIED\r\n";
-	write(fd, msg, strlen(msg));
-	*/
-	
         string str(args);
 	string str2(user);
 	
@@ -531,6 +468,9 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 	void
 IRCServer::leaveRoom(int fd, const char * user, const char * password, const char * args)
 {
+
+
+
 }
 
 	void
@@ -546,32 +486,6 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 	void
 IRCServer::getUsersInRoom(int fd, const char * user, const char * password, const char * args)
 {
-
-	//string str(args);
-
-	/*
-	int j;
-	for(int j=0; rooms.size();j++){
-
-		if (rooms[j].name.compare(str) == 0){
-		
-			sort( rooms[j].guestVec.begin(), rooms[j].guestVec.end() );
-			int i;
-			for(i=0; i < rooms[j].guestVec.size();i++){
-
-				string s = rooms[j].guestVec[i];
-				s = userVec[i] + "\r\n" ;
-				
-				const char *msg = s.c_str();
-				write(fd, msg, strlen(msg));
-
-			}
-
-
-		}
-
-
-	}*/
 
 	string str(args);
         string str2(user);
