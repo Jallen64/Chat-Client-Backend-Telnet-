@@ -422,7 +422,7 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 IRCServer::getAllUsers(int fd, const char * user, const char * password,const  char * args)
 {
 
-sort( userPass.begin(), userPass.end() );
+sort( userVec.begin(), userVec.end() );
 int i;
  for(i=0; i<userVec.size();i++){
 	//const char * msg =  "OK\r\n";
