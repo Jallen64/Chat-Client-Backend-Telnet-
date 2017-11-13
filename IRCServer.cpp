@@ -44,6 +44,13 @@ int QueueLength = 5;
 fstream reader;
 ofstream writer;
 
+struct ROOM{
+
+vector <string> guestVec;
+vector <string> messeges;
+
+}
+
 vector<string> userVec;
 vector<string> passVec;
 //test
@@ -328,7 +335,7 @@ IRCServer::initialize()
 	reader.close();
 */
 	// Initalize message list
-	vector<string> messages;
+	//vector<string> messages;
 
 }
 
@@ -419,14 +426,13 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 {
 }
 
-	void
+void
 IRCServer::getAllUsers(int fd, const char * user, const char * password,const  char * args)
 {
 
 	sort( userVec.begin(), userVec.end() );
 	int i;
 	for(i=0; i<userVec.size();i++){
-		//const char * msg =  "OK\r\n";
 		string s;	
 
 		s = userVec[i] + "\r\n" ;
