@@ -357,11 +357,9 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	write(fd, msg, strlen(msg));
 	
 	 for(i=0; i<userVec.size();i++){
-		
-		string str = userVec[i];
-
-		const char * c = str.c_str();	
-		printf("%s",c);
+	
+		cout<<"Users: " << userVec[i] <<endl;
+	
         }
 	return;		
 }
