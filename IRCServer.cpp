@@ -49,7 +49,7 @@ struct ROOM{
 vector <string> guestVec;
 vector <string> messeges;
 
-}
+};
 
 vector<string> userVec;
 vector<string> passVec;
