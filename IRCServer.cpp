@@ -528,6 +528,22 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 	void
 IRCServer::getUsersInRoom(int fd, const char * user, const char * password, const char * args)
 {
+	struct ROOM target;
+		
+	string str(args);
+
+	int j;
+	for(int j=0; rooms.size();i++){
+
+	if (rooms[i].name.compare(str) == 0){
+
+		target = rooms[i];
+	
+	}
+
+
+	}
+	//given size of specificed room vector, prints all users in room
 	int i;
 	for(i=0; i < rooms.size();i++){
 
@@ -551,7 +567,7 @@ IRCServer::getAllUsers(int fd, const char * user, const char * password,const  c
 		s = userVec[i] + "\r\n" ;
 
 
-		const char *msg = s.c_str()   ;	
+		const char *msg = s.c_str();	
 
 		write(fd, msg, strlen(msg));
 
