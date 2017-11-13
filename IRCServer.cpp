@@ -410,32 +410,53 @@ void
 IRCServer::createRoom(int fd, const char * user, const char * password, const char * args)
 {
 
+int i;
+string str(args);
+
+for(i=0; i<rooms.size();i++){
+
+if(rooms[i].name.compare(str))
+
+const char * msg =  "DENIED\r\n";
+write(fd, msg, strlen(msg));
+
+return;
+}
+
 struct ROOM r;
 
-string str(args);
 r.name = str;
 
 rooms.push_back(r);
 
+const char * msg =  "OK\r\n";
+write(fd, msg, strlen(msg));
+
 }
 
 
-void
+	void
 IRCServer::enterRoom(int fd, const char * user, const char * password, const char * args)
 {
 
-int i;
-for(i=0; i < rooms.size();i++){
+	int i;
+	string str(args);
 
-if (rooms[i].name.compare(args) == 0){
+	for(i=0; i < rooms.size();i++){
+
+		if (rooms[i].name.compare(str) == 0){
+
+			string str(user);
+
+			rooms[i].guestVec.push_back(str);
+
+			return;
+
+		}
 
 
 
-}
-
-
-
-}
+	}
 
 
 }
@@ -460,7 +481,7 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 {
 }
 
-void
+	void
 IRCServer::getAllUsers(int fd, const char * user, const char * password,const  char * args)
 {
 
@@ -471,7 +492,7 @@ IRCServer::getAllUsers(int fd, const char * user, const char * password,const  c
 
 		s = userVec[i] + "\r\n" ;
 
-		
+
 		const char *msg = s.c_str()   ;	
 
 		write(fd, msg, strlen(msg));
@@ -479,7 +500,7 @@ IRCServer::getAllUsers(int fd, const char * user, const char * password,const  c
 	}
 	const char *msg = "\r\n\0"  ;
 
-        write(fd, msg, strlen(msg));
+	write(fd, msg, strlen(msg));
 
 
 }
