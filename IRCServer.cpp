@@ -53,7 +53,7 @@ vector <string> messeges;
 
 vector<string> userVec;
 vector<string> passVec;
-vecot<ROOM> rooms;
+vector<ROOM> rooms;
 //test
 
 
