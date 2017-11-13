@@ -34,6 +34,7 @@ const char * usage =
 #include <fstream>
 #include <vector>
 #include <algorithm>
+#include <map>
 
 #include "IRCServer.h"
 
@@ -55,6 +56,9 @@ vector <string> messeges;
 vector<string> userVec;
 vector<string> passVec;
 vector<struct ROOM> rooms;
+
+map<string, struct ROOM> roomMap;
+
 //test
 
 
@@ -528,7 +532,6 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 	void
 IRCServer::getUsersInRoom(int fd, const char * user, const char * password, const char * args)
 {
-	struct ROOM target;
 
 	string str(args);
 
