@@ -481,17 +481,14 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 	void
 IRCServer::getUsersInRoom(int fd, const char * user, const char * password, const char * args)
 {
-int i;
-for(i=0; i < rooms.size();i++){
+	int i;
+	for(i=0; i < rooms.size();i++){
 
- string s = rooms[i].name;
- char *msg = s.c_str();
- write(fd, msg, strlen(msg));
+		string s = rooms[i].name;
+		const char *msg = s.c_str();
+		write(fd, msg, strlen(msg));
 
-
-
-}
-
+	}
 
 }
 
