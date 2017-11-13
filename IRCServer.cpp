@@ -427,13 +427,13 @@ sort( userVec.begin(), userVec.end() );
 int i;
  for(i=0; i<userVec.size();i++){
 	//const char * msg =  "OK\r\n";
-	
+	string s;	
 	if( (i-1) == userVec.size() ){
 	
-	string s = userVec[i];	
+	s = userVec[i];	
 
 	}else{
-	string s = userVec[i] + "\r\n" ;
+	s = userVec[i] + "\r\n" ;
 	
 	}
 	const char *msg = s.c_str()   ;	
