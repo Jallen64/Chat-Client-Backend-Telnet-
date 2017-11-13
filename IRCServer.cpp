@@ -301,7 +301,7 @@ IRCServer::processRequest( int fd )
 void
 IRCServer::initialize()
 {
-
+/*
 	// Open password file
 	reader.open("password.txt");
 
@@ -328,7 +328,7 @@ IRCServer::initialize()
 
 	// Initalize message list
 	vector<string> messages;
-
+*/
 }
 
 bool
@@ -375,13 +375,13 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	userVec.push_back(passS);
 
 	//Writes user and pass to the passwords.txt
-	writer.open("password.txt");
+	/*writer.open("password.txt");
 
 	writer << user << '\n';
 	writer << password << '\n';	
 
 	writer.close();
-
+*/
 	const char * msg =  "OK\r\n";
 	write(fd, msg, strlen(msg));
 	
