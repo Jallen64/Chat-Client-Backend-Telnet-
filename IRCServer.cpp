@@ -519,8 +519,8 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 	
 	map<string, struct ROOM>::iterator it;
 
-	it=roomMap.find(args);
-	it.guestVec.push_back(user);
+	it=roomMap.find(str);
+	it->second.guestVec.push_back(str2);
 
 }
 
