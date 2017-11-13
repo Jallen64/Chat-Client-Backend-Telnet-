@@ -522,6 +522,10 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 	it=roomMap.find(str);
 	it->second.guestVec.push_back(str2);
 
+	const char * msg =  "OK\r\n";
+        write(fd, msg, strlen(msg));
+        return;
+
 }
 
 	void
@@ -567,7 +571,6 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 
 
 	}
-	//given size of specificed room vector, prints all users in room
 
 }
 
