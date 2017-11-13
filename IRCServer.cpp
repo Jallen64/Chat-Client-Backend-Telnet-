@@ -411,7 +411,7 @@ IRCServer::createRoom(int fd, const char * user, const char * password, const ch
 {
 
 	int i;
-	string str= str(args);
+	string str(args);
 	cout<<"This is args in a string:"<<str<<endl;
 
 
