@@ -536,11 +536,14 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 	for(int j=0; rooms.size();j++){
 
 		if (rooms[j].name.compare(str) == 0){
-
+		
+			sort( rooms[j].guestVec.begin(), room[j].guestVec.end() );
 			int i;
 			for(i=0; i < rooms[j].guestVec.size();i++){
 
 				string s = rooms[j].guestVec[i];
+				s = userVec[i] + "\r\n" ;
+				
 				const char *msg = s.c_str();
 				write(fd, msg, strlen(msg));
 
