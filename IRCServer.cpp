@@ -335,7 +335,7 @@ IRCServer::initialize()
 	reader.close();
 */
 	// Initalize message list
-	//vector<string> messages;
+	vector<string> messages;
 
 }
 
