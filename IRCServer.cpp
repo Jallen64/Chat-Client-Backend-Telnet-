@@ -425,28 +425,18 @@ IRCServer::getAllUsers(int fd, const char * user, const char * password,const  c
 
 	sort( userVec.begin(), userVec.end() );
 	int i;
-	string s;	
 	for(i=0; i<userVec.size();i++){
 		//const char * msg =  "OK\r\n";
-	/*	if( (i) == userVec.size() ){
+		string s;	
 
-			s = userVec[i] ;	
+		s = userVec[i] + "\r\n" ;
 
-		}else
-{*/
-			s = userVec[i] + "\r\n" ;
-
-	//	}
+		
 		const char *msg = s.c_str()   ;	
 
 		write(fd, msg, strlen(msg));
 
 	}
-	s += "\r\n";
-
-	const char *msg = s.c_str()   ;	
-
-	write(fd, msg, strlen(msg));
 
 
 }
