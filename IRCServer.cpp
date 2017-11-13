@@ -326,11 +326,6 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	
 	//Checks to see if username is already being used
 	
-	for(int x =0; x<userVec.size();x++){
-	
-		cout << userVec[x] <<'\n';;
-	}
-	
 	int i;
 		
 	for(i=0; i<userVec.size();i++){
@@ -344,9 +339,10 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	}
 	
 	//add user and pass to respective vectors
-	userVec.push_back(user);
-	userVec.push_back(password);
-
+	userVec.push_back(str(user));
+	userVec.push_back(str(password));
+	
+	//Writes user and pass to the passwords.txt
 	writer.open("password.txt");
 	
 	writer << user << '\n';
