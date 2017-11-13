@@ -425,7 +425,7 @@ int i;
  for(i=0; i<userVec.size();i++){
 	//const char * msg =  "OK\r\n";
 	
-	string s = userVec[i];
+	string s = userVec[i] + "\r\n" ;
 	const char *msg = s.c_str()   ;	
 
         write(fd, msg, strlen(msg));
