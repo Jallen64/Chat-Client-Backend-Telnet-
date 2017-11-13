@@ -273,7 +273,7 @@ IRCServer::processRequest( int fd )
 void
 IRCServer::initialize()
 {
-/*	// Open password file
+	// Open password file
 	reader.open("password.txt");
 
 	if(reader.is_open()){
@@ -299,7 +299,7 @@ IRCServer::initialize()
 
 	// Initalize message list
 	vector<string> messages;
-*/
+
 }
 
 bool
@@ -328,7 +328,7 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 
 	int i;
 
-	for(i=0; i<userVec.size();i++){
+/*	for(i=0; i<userVec.size();i++){
 
 		if(userVec[i].compare(user) ==0){
 
@@ -336,7 +336,7 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 			write(fd, msg, strlen(msg));
 			return;
 		}
-	}
+*/	}
 
 
 	string userS(user);
