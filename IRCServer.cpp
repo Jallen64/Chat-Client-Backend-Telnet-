@@ -339,11 +339,11 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	}
 	
 
-	string user(user);
-	string pass(password);
+	string userS(user);
+	string passS(password);
 	//add user and pass to respective vectors
-	userVec.push_back(user);
-	userVec.push_back(pass);
+	userVec.push_back(userS);
+	userVec.push_back(passS);
 	
 	//Writes user and pass to the passwords.txt
 	writer.open("password.txt");
