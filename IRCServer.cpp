@@ -439,6 +439,7 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 IRCServer::createRoom(int fd, const char * user, const char * password, const char * args)
 {
 	struct ROOM r;
+	string str(args);	
 
 	r.name = str;
 	roomMap[str] = r;
