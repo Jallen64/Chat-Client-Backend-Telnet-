@@ -406,7 +406,7 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	return;		
 }
 
-void
+	void
 IRCServer::createRoom(int fd, const char * user, const char * password, const char * args)
 {
 
@@ -417,12 +417,12 @@ IRCServer::createRoom(int fd, const char * user, const char * password, const ch
 
 		if(rooms[i].name.compare(str)){
 
-		const char * msg =  "DENIED\r\n";
-		write(fd, msg, strlen(msg));
+			const char * msg =  "DENIED\r\n";
+			write(fd, msg, strlen(msg));
 
-		return;
+			return;
+		}
 	}
-}
 
 	struct ROOM r;
 
@@ -481,6 +481,18 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 	void
 IRCServer::getUsersInRoom(int fd, const char * user, const char * password, const char * args)
 {
+int i;
+for(i=0; i < rooms.size();i++){
+
+ string s = rooms[i].name;
+ char *msg = s.c_str();
+ write(fd, msg, strlen(msg));
+
+
+
+}
+
+
 }
 
 	void
