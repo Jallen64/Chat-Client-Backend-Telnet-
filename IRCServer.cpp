@@ -53,6 +53,7 @@ vector <string> messeges;
 
 vector<string> userVec;
 vector<string> passVec;
+vecot<ROOM> rooms;
 //test
 
 
@@ -335,7 +336,7 @@ IRCServer::initialize()
 	reader.close();
 */
 	// Initalize message list
-	vector<string> messages;
+	//vector<string> messages;
 
 }
 
