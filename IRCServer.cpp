@@ -277,6 +277,9 @@ IRCServer::processRequest( int fd )
 	if (!strcmp(command, "ADD-USER")) {
 		addUser(fd, user, password, args);
 	}
+	else if (!strcmp(command, "CREATE-ROOM")) {
+		createRoom(fd, user, password, args);
+	}
 	else if (!strcmp(command, "ENTER-ROOM")) {
 		enterRoom(fd, user, password, args);
 	}
@@ -401,6 +404,12 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
         }
 	return;		
 }
+
+void
+IRCServer::createRoom(int fd, const char * user, const char * password, const char * args)
+{
+}
+
 
 void
 IRCServer::enterRoom(int fd, const char * user, const char * password, const char * args)
