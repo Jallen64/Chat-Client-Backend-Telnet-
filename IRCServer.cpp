@@ -487,7 +487,7 @@ IRCServer::createRoom(int fd, const char * user, const char * password, const ch
 	void
 IRCServer::enterRoom(int fd, const char * user, const char * password, const char * args)
 {
-
+	/*
 	int i;
 	string str(args);
 
@@ -508,9 +508,18 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 
 
 	}
+	
 	const char * msg =  "DENIED\r\n";
 	write(fd, msg, strlen(msg));
+	*/
+	
+        string str(args);
+	string str2(user);
 
+	map<string, struct ROOM> roomMap:: iterator it;
+	
+	it=roomMap.find(args);
+	it.guestVec.push_back(user);
 
 }
 
