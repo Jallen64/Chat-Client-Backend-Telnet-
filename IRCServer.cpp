@@ -425,9 +425,9 @@ IRCServer::getAllUsers(int fd, const char * user, const char * password,const  c
 
 	sort( userVec.begin(), userVec.end() );
 	int i;
+	string s;	
 	for(i=0; i<userVec.size();i++){
 		//const char * msg =  "OK\r\n";
-		string s;	
 	/*	if( (i) == userVec.size() ){
 
 			s = userVec[i] ;	
@@ -437,11 +437,16 @@ IRCServer::getAllUsers(int fd, const char * user, const char * password,const  c
 			s = userVec[i] + "\r\n" ;
 
 	//	}
-		const char *msg = s.c_str()   ;	
+		//const char *msg = s.c_str()   ;	
 
-		write(fd, msg, strlen(msg));
+		write(fd, s.c_str(), strlen(msg));
 
 	}
+	s += "\r\n";
+
+	//const char *msg = s.c_str()   ;	
+
+	write(fd, msg, strlen(msg));
 
 
 }
