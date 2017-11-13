@@ -471,16 +471,28 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 {
 
 	string str(args);
-        string str2(user);
+	string str2(user);
 
-        map<string, struct ROOM>::iterator it;
+	map<string, struct ROOM>::iterator it2;
+	it2->second.guestVec
 
-        it=roomMap.find(str);
-        it->second.guestVec.erase(std::remove( it->second.guestVec.begin(),  it->second.guestVec.end(), str2),  it->second.guestVec.end());
+	if(std::find(it2->second.guestVec.begin(), it2->second.guestVec.end(), str2) != it2->second.guestVec.end()) {
+		/* v contains x */
+	} else {
+		const char * msg =  "ERROR (No user in room)\r\n";
+		write(fd, msg, strlen(msg));
+		return;
+	}
 
-        const char * msg =  "OK\r\n";
-        write(fd, msg, strlen(msg));
-        return;
+	map<string, struct ROOM>::iterator it;
+
+
+	it=roomMap.find(str);
+	it->second.guestVec.erase(std::remove( it->second.guestVec.begin(),  it->second.guestVec.end(), str2),  it->second.guestVec.end());
+
+	const char * msg =  "OK\r\n";
+	write(fd, msg, strlen(msg));
+	return;
 
 
 }
@@ -500,28 +512,28 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 {
 
 	string str(args);
-        string str2(user);
+	string str2(user);
 
-        map<string, struct ROOM>::iterator it;
+	map<string, struct ROOM>::iterator it;
 
-        it=roomMap.find(str);
+	it=roomMap.find(str);
 	int i;
 	for( i =0; i < it->second.guestVec.size() ; i++){
-       		
+
 		sort( it->second.guestVec.begin(),it->second.guestVec.end() ); 
 		string s;
-		
+
 		s= it->second.guestVec[i] + "\r\n";
 
 		const char *msg = s.c_str();
 
-                write(fd, msg, strlen(msg));
-	
+		write(fd, msg, strlen(msg));
+
 	}
-	
+
 	const char *msg = "\r\n\0"  ;
 
-        write(fd, msg, strlen(msg));
+	write(fd, msg, strlen(msg));
 
 }
 
