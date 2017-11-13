@@ -58,7 +58,6 @@ vector<string> passVec;
 vector<struct ROOM> rooms;
 
 map<string, struct ROOM> roomMap;
-map<string, struct ROOM> roomMap::iterator it;
 
 
 //test
@@ -517,6 +516,8 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 	
         string str(args);
 	string str2(user);
+	
+	map<string, struct ROOM>::iterator it;
 
 	it=roomMap.find(args);
 	it.guestVec.push_back(user);
