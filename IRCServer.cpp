@@ -369,7 +369,6 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	//Checks to see if username is already being used
 
 	int i;
-	cout<< "Hey wer're in this function 'add user'" << endl;
 	for(i=0; i<userVec.size();i++){
 
 		if(userVec[i].compare(user) ==0){
@@ -412,7 +411,7 @@ IRCServer::createRoom(int fd, const char * user, const char * password, const ch
 
 	int i;
 	string str(args);
-	cout<<"This is args in a string:"<<str<<endl;
+	cout<<"This is args in a string:"<< str <<endl;
 
 
 	/*for(i=0; i<rooms.size();i++){
