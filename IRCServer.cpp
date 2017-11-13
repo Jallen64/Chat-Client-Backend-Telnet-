@@ -325,10 +325,10 @@ IRCServer::initialize()
 
 	}
 	reader.close();
-
+*/
 	// Initalize message list
 	vector<string> messages;
-*/
+
 }
 
 bool
@@ -372,7 +372,7 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	string passS(password);
 	//add user and pass to respective vectors
 	userVec.push_back(userS);
-	userVec.push_back(passS);
+	passVec.push_back(passS);
 
 	//Writes user and pass to the passwords.txt
 	/*writer.open("password.txt");
