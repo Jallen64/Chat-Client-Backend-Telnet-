@@ -593,6 +593,9 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 	
 	}
 	
+	const char *msg = "\r\n\0"  ;
+
+        write(fd, msg, strlen(msg));
 
 }
 
