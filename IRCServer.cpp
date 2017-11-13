@@ -437,6 +437,9 @@ IRCServer::getAllUsers(int fd, const char * user, const char * password,const  c
 		write(fd, msg, strlen(msg));
 
 	}
+	const char *msg = "\r\n\0"  ;
+
+        write(fd, msg, strlen(msg));
 
 
 }
