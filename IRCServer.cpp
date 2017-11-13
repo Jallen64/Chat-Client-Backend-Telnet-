@@ -428,7 +428,14 @@ int i;
  for(i=0; i<userVec.size();i++){
 	//const char * msg =  "OK\r\n";
 	
+	if( (i-1) == userVec.size() ){
+	
+	string s = userVec[i];	
+
+	}else{
 	string s = userVec[i] + "\r\n" ;
+	
+	}
 	const char *msg = s.c_str()   ;	
 
         write(fd, msg, strlen(msg));
