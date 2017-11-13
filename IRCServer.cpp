@@ -239,13 +239,14 @@ IRCServer::processRequest( int fd )
 	printf("For now, command, user, and password are hardwired.\n");
 	*/
 	
+	/*
 	char * c;
 	
 	vector <string> parse;
 	
 	c=strtok(commandLine," ");
 	int i =0;
-	while(c!=NULL){
+	while(c!=NULL && i<3){
 
 		string s(c);
 		parse.push_back(s);
@@ -256,6 +257,7 @@ IRCServer::processRequest( int fd )
 	const char * command = parse[0].c_str();
 	const char * user = parse[1].c_str();
 	const char * password = parse[2].c_str();
+	const char * args = parse[3].c_str();
 	//const char * args = "";
 
 	string s2;
@@ -269,7 +271,47 @@ IRCServer::processRequest( int fd )
 	}
 	
 	const char * args = s2.c_str();
+	
+	printf("command=%s\n", command);
+	printf("user=%s\n", user);
+	printf( "password=%s\n", password );
+	printf("args=%s\n", args);
+	*/
 
+	char * command = (char *) malloc(100 * sizeof(char));
+	char * user = (char *) malloc(100 * sizeof(char));
+	char * password = (char *) malloc(100 * sizeof(char));
+	char * args = (char *) malloc(100 * sizeof(char));
+	char * message = (char *)malloc(150 * sizeof(char));
+
+	int argc = 0;
+	int i = 0;   //character in commandLine
+	int j = 0;   //character in each array
+
+	for (i = 0; i < 100; i++) {
+		if (commandLine[i] == ' ' && argc != 4) {
+			argc++;
+			j = 0;
+		}
+		else if (argc == 0)   //command
+			command[j++] = commandLine[i];
+		else if (argc == 1)   //user name
+			user[j++] = commandLine[i];
+		else if (argc == 2)   //password
+			password[j++] = commandLine[i];
+		else if (argc == 3)   //argument
+			args[j++] = commandLine[i];
+		else if (argc == 4)
+			message[j++] = commandLine[i];
+		else
+			break;
+	}
+
+	if (args[0] == '\0')
+		args = strdup("NULL");
+	if (message[0] == '\0')
+		message = strdup("NULL");
+	
 	printf("command=%s\n", command);
 	printf("user=%s\n", user);
 	printf( "password=%s\n", password );
