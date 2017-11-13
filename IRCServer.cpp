@@ -537,21 +537,21 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 
 		if (rooms[j].name.compare(str) == 0){
 
-			target.guestVec = rooms.guestVec;
+			int i;
+			for(i=0; i < rooms[j].guestVec.size();i++){
+
+				string s = rooms[j].guestVec[i];
+				const char *msg = s.c_str();
+				write(fd, msg, strlen(msg));
+
+			}
+
 
 		}
 
 
 	}
 	//given size of specificed room vector, prints all users in room
-	int i;
-	for(i=0; i < target.guestVec.size();i++){
-
-		string s = target.guestVec[i];
-		const char *msg = s.c_str();
-		write(fd, msg, strlen(msg));
-
-	}
 
 }
 
