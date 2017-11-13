@@ -453,8 +453,6 @@ IRCServer::createRoom(int fd, const char * user, const char * password, const ch
 
 	int i;
 	string str(args);
-	cout << "This is args: " << args << endl;
-	cout<<"This is args in a string:"<< str <<endl;
 
 
 	/*for(i=0; i<rooms.size();i++){
@@ -492,7 +490,7 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 	for(i=0; i < rooms.size();i++){
 
 		if (rooms[i].name.compare(str) == 0){
-
+			cout << "Room name is: " << rooms[i].name << endl;
 			string str(user);
 
 			rooms[i].guestVec.push_back(str);
