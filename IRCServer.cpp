@@ -531,7 +531,7 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 	int i;
 	for(i=0; i < rooms.size();i++){
 
-		string s = rooms[i].name;
+		string s = rooms[i].guestVec[i];
 		const char *msg = s.c_str();
 		write(fd, msg, strlen(msg));
 
