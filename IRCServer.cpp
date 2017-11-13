@@ -430,7 +430,7 @@ int i;
 	string s;	
 	if( (i-1) == userVec.size() ){
 	
-	s = userVec[i];	
+	s = userVec[i] + "\r\n" ;	
 
 	}else{
 	s = userVec[i] + "\r\n" ;
