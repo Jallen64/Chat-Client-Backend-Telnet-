@@ -411,7 +411,9 @@ IRCServer::createRoom(int fd, const char * user, const char * password, const ch
 {
 
 	int i;
-	string str(args);
+	string str= str(args);
+	cout<<"This is args in a string:"<<str<<endl;
+
 
 	/*for(i=0; i<rooms.size();i++){
 
@@ -433,7 +435,7 @@ IRCServer::createRoom(int fd, const char * user, const char * password, const ch
 
 	const char * msg =  "OK\r\n";
 	write(fd, msg, strlen(msg));
-
+	
 
 }
 
