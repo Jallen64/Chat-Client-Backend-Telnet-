@@ -273,7 +273,7 @@ IRCServer::processRequest( int fd )
 void
 IRCServer::initialize()
 {
-	// Open password file
+/*	// Open password file
 	reader.open("password.txt");
 
 	if(reader.is_open()){
@@ -299,7 +299,7 @@ IRCServer::initialize()
 
 	// Initalize message list
 	vector<string> messages;
-
+*/
 }
 
 bool
@@ -325,29 +325,29 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	// Here add a new user. For now always return OK.
 	
 	//Checks to see if username is already being used
-	
-	int i;
-		
-	for(i=0; i<userVec.size();i++){
-		
-	if(userVec[i].compare(user) ==0){
 
-		const char * msg =  "DENIED\r\n";
-        	write(fd, msg, strlen(msg));
-		return;
+	int i;
+
+	for(i=0; i<userVec.size();i++){
+
+		if(userVec[i].compare(user) ==0){
+
+			const char * msg =  "DENIED\r\n";
+			write(fd, msg, strlen(msg));
+			return;
 		}
 	}
-	
+
 
 	string userS(user);
 	string passS(password);
 	//add user and pass to respective vectors
 	userVec.push_back(userS);
 	userVec.push_back(passS);
-	
+
 	//Writes user and pass to the passwords.txt
 	writer.open("password.txt");
-	
+
 	writer << user << '\n';
 	writer << password << '\n';	
 
@@ -364,27 +364,27 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 {
 }
 
-void
+	void
 IRCServer::leaveRoom(int fd, const char * user, const char * password, const char * args)
 {
 }
 
-void
+	void
 IRCServer::sendMessage(int fd, const char * user, const char * password, const char * args)
 {
 }
 
-void
+	void
 IRCServer::getMessages(int fd, const char * user, const char * password, const char * args)
 {
 }
 
-void
+	void
 IRCServer::getUsersInRoom(int fd, const char * user, const char * password, const char * args)
 {
 }
 
-void
+	void
 IRCServer::getAllUsers(int fd, const char * user, const char * password,const  char * args)
 {
 
