@@ -580,7 +580,7 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 
         it=roomMap.find(str);
 	int i;
-	for( i =0; i < it->second.guestVec.size() < i++){
+	for( i =0; i < it->second.guestVec.size() ; i++){
         
 		string s;
 		
