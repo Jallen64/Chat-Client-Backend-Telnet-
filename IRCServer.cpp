@@ -516,7 +516,7 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
         string str(args);
 	string str2(user);
 
-	map<string, struct ROOM> roomMap:: iterator it;
+	map<string, struct ROOM> roomMap::iterator it;
 	
 	it=roomMap.find(args);
 	it.guestVec.push_back(user);
