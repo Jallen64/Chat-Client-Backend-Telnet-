@@ -476,7 +476,7 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
         map<string, struct ROOM>::iterator it;
 
         it=roomMap.find(str);
-        it->second.guestVec.erase(std::remove( it->second.guestVec.begin(),  it->second.guestVec.end(), str),  it->second.guestVec.end());
+        it->second.guestVec.erase(std::remove( it->second.guestVec.begin(),  it->second.guestVec.end(), str2),  it->second.guestVec.end());
 
         const char * msg =  "OK\r\n";
         write(fd, msg, strlen(msg));
