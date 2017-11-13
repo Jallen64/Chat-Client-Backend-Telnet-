@@ -547,8 +547,9 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 IRCServer::getUsersInRoom(int fd, const char * user, const char * password, const char * args)
 {
 
-	string str(args);
+	//string str(args);
 
+	/*
 	int j;
 	for(int j=0; rooms.size();j++){
 
@@ -570,7 +571,27 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 		}
 
 
+	}*/
+
+	string str(args);
+        string str2(user);
+
+        map<string, struct ROOM>::iterator it;
+
+        it=roomMap.find(str);
+	int i;
+	for( i =0; i < it->second.guestVec.size() < i++){
+        
+		string s;
+		
+		s= it->second.guestVec[i] + "/r/n";
+
+		const char *msg = s.c_str();
+
+                write(fd, msg, strlen(msg));
+	
 	}
+	
 
 }
 
