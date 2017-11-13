@@ -423,6 +423,21 @@ rooms.push_back(r);
 void
 IRCServer::enterRoom(int fd, const char * user, const char * password, const char * args)
 {
+
+int i;
+for(i=0; i < rooms.size();i++){
+
+if (rooms[i].name.compare(args) == 0){
+
+
+
+}
+
+
+
+}
+
+
 }
 
 	void
