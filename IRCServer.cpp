@@ -46,6 +46,7 @@ ofstream writer;
 
 struct ROOM{
 
+string name;
 vector <string> guestVec;
 vector <string> messeges;
 
@@ -408,6 +409,14 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 void
 IRCServer::createRoom(int fd, const char * user, const char * password, const char * args)
 {
+
+struct ROOM r;
+
+string str(args);
+r.name = str;
+
+rooms.push_back(r);
+
 }
 
 
