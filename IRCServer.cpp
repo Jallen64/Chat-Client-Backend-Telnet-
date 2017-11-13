@@ -537,7 +537,7 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 
 		if (rooms[j].name.compare(str) == 0){
 		
-			sort( rooms[j].guestVec.begin(), room[j].guestVec.end() );
+			sort( rooms[j].guestVec.begin(), rooms[j].guestVec.end() );
 			int i;
 			for(i=0; i < rooms[j].guestVec.size();i++){
 
