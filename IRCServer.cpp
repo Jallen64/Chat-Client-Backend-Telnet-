@@ -529,17 +529,17 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 IRCServer::getUsersInRoom(int fd, const char * user, const char * password, const char * args)
 {
 	struct ROOM target;
-		
+
 	string str(args);
 
 	int j;
 	for(int j=0; rooms.size();j++){
 
-	if (rooms[j].name.compare(str) == 0){
+		if (rooms[j].name.compare(str) == 0){
 
-		target = rooms[j];
-	
-	}
+			target.guestVec = rooms.guestVec;
+
+		}
 
 
 	}

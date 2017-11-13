@@ -1,2 +1,3 @@
 ./test-server1.sh ./IRCServer 42077   : 5   of 5  
 ./test-server2.sh ./IRCServer 42077   : 0   of 5  
+./test-server3.sh ./IRCServer 42077   : 0   of 5  
