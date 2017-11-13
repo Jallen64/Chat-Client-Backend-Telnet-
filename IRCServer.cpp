@@ -410,27 +410,27 @@ void
 IRCServer::createRoom(int fd, const char * user, const char * password, const char * args)
 {
 
-int i;
-string str(args);
+	int i;
+	string str(args);
 
-for(i=0; i<rooms.size();i++){
+	for(i=0; i<rooms.size();i++){
 
-if(rooms[i].name.compare(str))
+		if(rooms[i].name.compare(str)){
 
-const char * msg =  "DENIED\r\n";
-write(fd, msg, strlen(msg));
+		const char * msg =  "DENIED\r\n";
+		write(fd, msg, strlen(msg));
 
-return;
-}
+		return;
+	}
 
-struct ROOM r;
+	struct ROOM r;
 
-r.name = str;
+	r.name = str;
 
-rooms.push_back(r);
+	rooms.push_back(r);
 
-const char * msg =  "OK\r\n";
-write(fd, msg, strlen(msg));
+	const char * msg =  "OK\r\n";
+	write(fd, msg, strlen(msg));
 
 }
 
