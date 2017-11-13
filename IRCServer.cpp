@@ -535,9 +535,9 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 	int j;
 	for(int j=0; rooms.size();j++){
 
-	if (rooms[i].name.compare(str) == 0){
+	if (rooms[j].name.compare(str) == 0){
 
-		target = rooms[i];
+		target = rooms[j];
 	
 	}
 
