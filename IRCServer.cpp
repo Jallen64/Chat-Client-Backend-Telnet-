@@ -490,7 +490,7 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 		num = convert.str();
 		
 
-                s=  + " " + it->second.messeges[i] + "\r\n";
+                s= num + " " + it->second.messeges[i] + "\r\n";
 
                 const char *msg = s.c_str();
 
