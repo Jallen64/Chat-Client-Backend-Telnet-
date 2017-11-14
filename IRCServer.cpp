@@ -63,6 +63,8 @@ map<string, struct ROOM> roomMap;
 char * user;
 char * password;
 char * args;
+
+string hack;
 //test
 
 
@@ -465,6 +467,8 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 {
 
 	string str(args);
+	string str2(user);
+	hack = str2;
 
 	int pos = str.find_first_of(' ');
 	std::string roomName = str.substr(pos+1),
