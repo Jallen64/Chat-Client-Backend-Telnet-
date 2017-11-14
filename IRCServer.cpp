@@ -449,10 +449,12 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
         std::string messege= str.substr(pos+1),
         roomName = str.substr(0, pos);
 
+	string messegeFinal = str2 + " " +messege;
+	
 	map<string, struct ROOM>::iterator it;
 
 	it=roomMap.find(roomName);
-	it->second.messeges.push_back(messege);
+	it->second.messeges.push_back(messegeFinal);
 	
 	cout << "First messege entered: " << it->second.messeges[0] << endl;
 
@@ -493,7 +495,7 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 		num = convert.str();
 		
 
-                s= num + " " + hack + " " + it->second.messeges[i] + "\r\n";
+                s= num + " " + it->second.messeges[i] + "\r\n";
 
                 const char *msg = s.c_str();
 
