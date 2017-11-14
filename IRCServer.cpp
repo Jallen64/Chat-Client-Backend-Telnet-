@@ -350,7 +350,8 @@ IRCServer::checkPassword(int fd, const char * user, const char * password) {
 void
 IRCServer::addUser(int fd, const char * user, const char * password, const char * args)
 {
-	if(!(checkPassword(fd, user, password))){
+	if((checkPassword(fd, user, password))){
+	}else{
 
 		const char * msg =  "ERROR (Wrong password)\r\n";
                 write(fd, msg, strlen(msg));
