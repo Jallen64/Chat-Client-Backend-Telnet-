@@ -531,6 +531,9 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 	
 	int finalNumber = atoi(number.c_str());	
 
+	cout << "This is the roomName :" << roomName << endl;
+	cout << "This is the number : " << finalNumber << endl;
+
 	map<string, struct ROOM>::iterator it;
 
 	it=roomMap.find(roomName);
