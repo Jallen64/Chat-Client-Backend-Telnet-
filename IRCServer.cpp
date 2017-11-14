@@ -442,10 +442,14 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 	string str(args);
 	string str2(user);
 
+	int pos = str.find_first_of(' ');
+        std::string roomName = str.substr(pos+1),
+        messege = str.substr(0, pos);
+
 	map<string, struct ROOM>::iterator it;
 
-	it=roomMap.find(str);
-	it->second.messeges.push_back(str);
+	it=roomMap.find(roomName);
+	it->second.messeges.push_back(messege);
 	
 	cout << "First messege entered: " << it->second.messeges[0] << endl;
 
