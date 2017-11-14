@@ -501,11 +501,42 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 	void
 IRCServer::sendMessage(int fd, const char * user, const char * password, const char * args)
 {
+
+	string str(args);
+	string str2(user);
+
+	map<string, struct ROOM>::iterator it;
+
+	it=roomMap.find(str);
+	it->second.messeges.push_back(str);
+
+	const char * msg =  "OK\r\n";
+	write(fd, msg, strlen(msg));
+	return;
+
+
 }
 
 	void
 IRCServer::getMessages(int fd, const char * user, const char * password, const char * args)
 {
+
+	string str(args);
+
+	int pos = input_str.find_first_of(' ');
+	std::string number = input_str.substr(pos+1),
+	roomName = input_str.substr(0, pos);
+	
+	int finalNumber = stoi( number );
+
+	map<string, struct ROOM>::iterator it;
+
+	it=roomMap.find(roomName);
+
+	
+	it->second.messeges.push_back(str);	
+	std::string output_str = firstname + " " + lastname;
+
 }
 
 	void
