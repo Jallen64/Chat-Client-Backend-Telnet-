@@ -443,8 +443,8 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 	string str2(user);
 
 	int pos = str.find_first_of(' ');
-        std::string roomName = str.substr(pos+1),
-        messege = str.substr(0, pos);
+        std::string messege= str.substr(pos+1),
+        roomName = str.substr(0, pos);
 
 	map<string, struct ROOM>::iterator it;
 
@@ -467,8 +467,8 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 	string str(args);
 
 	int pos = str.find_first_of(' ');
-	std::string number = str.substr(pos+1),
-	roomName = str.substr(0, pos);
+	std::string roomName = str.substr(pos+1),
+	number = str.substr(0, pos);
 	
 	int finalNumber = atoi(number.c_str());	
 
