@@ -350,6 +350,12 @@ IRCServer::checkPassword(int fd, const char * user, const char * password) {
 void
 IRCServer::addUser(int fd, const char * user, const char * password, const char * args)
 {
+	if(!(checkPassword(fd, user, password))){
+
+		const char * msg =  "ERROR (Wrong password)\r\n";
+                write(fd, msg, strlen(msg));
+                return;
+	}
 	int i;
 	for(i=0; i<userVec.size();i++){
 
