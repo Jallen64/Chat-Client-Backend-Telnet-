@@ -482,7 +482,7 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 	int i;
         for( i =finalNumber; i< it->second.messeges.size() ; i++){
 
-		std::string num = std::to_string(i);
+		string num = to_string(i);
                 string s;
 
                 s= num + " " + it->second.messeges[i] + "\r\n";
