@@ -533,9 +533,19 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 
 	it=roomMap.find(roomName);
 
+	int i;
+        for( i =finalNumber; i < it->second.messeges.size() ; i++){
+
+                string s;
+
+                s= it->second.messeges[i] + "\r\n";
+
+                const char *msg = s.c_str();
+
+                write(fd, msg, strlen(msg));
+
+        }
 	
-	it->second.messeges.push_back(str);	
-//	std::string output_str = firstname + " " + lastname;
 
 }
 
