@@ -480,7 +480,7 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 	it=roomMap.find(roomName);
 
 	int i;
-        for( i =finalNumber; i< it->second.messeges.size() ; i++){
+        for( i =finalNumber+1; i< it->second.messeges.size() ; i++){
 
                 string s;
 		
