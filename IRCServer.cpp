@@ -62,7 +62,7 @@ map<string, struct ROOM> roomMap;
 
 char * user;
 char * password;
-char * host;
+//char * host;
 char * args;
 //test
 
