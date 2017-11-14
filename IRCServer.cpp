@@ -535,7 +535,7 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 
 	
 	it->second.messeges.push_back(str);	
-	std::string output_str = firstname + " " + lastname;
+//	std::string output_str = firstname + " " + lastname;
 
 }
 
