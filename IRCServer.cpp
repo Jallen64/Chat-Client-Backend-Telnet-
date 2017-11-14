@@ -61,7 +61,7 @@ map<string, struct ROOM> roomMap;
 
 
 char * user;
-char * pass;
+char * password;
 char * args;
 //test
 
@@ -251,12 +251,12 @@ IRCServer::processRequest( int fd )
 	char* command = strtok(commandLine, " ");
 
 	user = strtok(NULL, " ");
-	pass = strtok(NULL, " ");
+	password = strtok(NULL, " ");
 	args = strtok(NULL, "");
 	
 	printf("command=%s\n", command);
 	printf("user=%s\n", user);
-	printf( "password=%s\n", pass );
+	printf( "password=%s\n", password );
 	printf("args=%s\n", args);
 
 	if (!strcmp(command, "ADD-USER")) {
