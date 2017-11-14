@@ -283,7 +283,7 @@ IRCServer::processRequest( int fd )
 	printf("args=%s\n", args);
 	*/
 
-	char * command = (char *) malloc(100 * sizeof(char));
+	/*char * command = (char *) malloc(100 * sizeof(char));
 	char * user = (char *) malloc(100 * sizeof(char));
 	char * password = (char *) malloc(100 * sizeof(char));
 	char * args = (char *) malloc(100 * sizeof(char));
@@ -316,6 +316,12 @@ IRCServer::processRequest( int fd )
 		args = strdup("NULL");
 	if (message[0] == '\0')
 		message = strdup("NULL");
+	*/
+	
+	char* command = strtok(commandLine, " ");
+	user = strtok(NULL, " ");
+	password = strtok(NULL, " ");
+	args = strtok(NULL, "");
 	
 	printf("command=%s\n", command);
 	printf("user=%s\n", user);
