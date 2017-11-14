@@ -436,7 +436,7 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 	 it2=roomMap.find(str);	
 
 	 if(std::find(it2->second.guestVec.begin(), it2->second.guestVec.end(), str2) != it2->second.guestVec.end()) {
-		 /* v contains x */
+	
 	 } else {
 		 const char * msg =  "ERROR (No user in room)\r\n";
 		 write(fd, msg, strlen(msg));
