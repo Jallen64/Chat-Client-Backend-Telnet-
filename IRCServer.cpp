@@ -443,6 +443,7 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 
 	string str(args);
 	string str2(user);
+	hack = str2;
 
 	int pos = str.find_first_of(' ');
         std::string messege= str.substr(pos+1),
@@ -467,8 +468,6 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 {
 
 	string str(args);
-	string str2(user);
-	hack = str2;
 
 	int pos = str.find_first_of(' ');
 	std::string roomName = str.substr(pos+1),
@@ -494,13 +493,18 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 		num = convert.str();
 		
 
-                s= num + " " + it->second.messeges[i] + "\r\n";
+                s= num + " " + hack + " " + it->second.messeges[i] + "\r\n";
 
                 const char *msg = s.c_str();
 
                 write(fd, msg, strlen(msg));
 
         }
+	
+	const char *msg = "\r\n\0"  ;
+
+        write(fd, msg, strlen(msg));
+
 	
 
 }
