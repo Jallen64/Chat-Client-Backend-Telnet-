@@ -527,7 +527,7 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 	std::string number = str.substr(pos+1),
 	roomName = str.substr(0, pos);
 	
-	int finalNumber =std::stoi( number );
+	int finalNumber = atoi(number.c_str());	
 
 	map<string, struct ROOM>::iterator it;
 
