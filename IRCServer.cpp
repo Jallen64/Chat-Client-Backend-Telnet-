@@ -475,8 +475,7 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 
 	 map<string, struct ROOM>::iterator it2;
 
-	 it2=roomMap.find(str);
-	 it2->second.guestVec.push_back(str2);	
+	 it2=roomMap.find(str);	
 
 	 if(std::find(it2->second.guestVec.begin(), it2->second.guestVec.end(), str2) != it2->second.guestVec.end()) {
 		 /* v contains x */
