@@ -523,7 +523,7 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 
 	string str(args);
 
-	int pos = input_str.find_first_of(' ');
+	int pos = str.find_first_of(' ');
 	std::string number = input_str.substr(pos+1),
 	roomName = input_str.substr(0, pos);
 	
