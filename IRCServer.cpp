@@ -509,6 +509,8 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 
 	it=roomMap.find(str);
 	it->second.messeges.push_back(str);
+	
+	cout << "First messege entered: " << it->second.messeges[0] << endl;
 
 	const char * msg =  "OK\r\n";
 	write(fd, msg, strlen(msg));
