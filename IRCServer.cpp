@@ -60,6 +60,10 @@ vector<struct ROOM> rooms;
 map<string, struct ROOM> roomMap;
 
 
+char * user;
+char * password;
+char * host;
+char * args;
 //test
 
 
