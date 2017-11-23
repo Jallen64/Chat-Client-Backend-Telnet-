@@ -17,7 +17,7 @@ char * usage =
 "where <host> is the name of the machine where talk-server      \n"
 "is running. <port> is the port number you used when you run    \n"
 "daytime-server.                                                \n"
-"                                                               \n";
+"                                                               \n"
 
 #include <sys/types.h>
 #include <sys/socket.h>
