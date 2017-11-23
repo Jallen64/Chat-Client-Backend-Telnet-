@@ -1,3 +1,45 @@
+char * usage =
+"                                                               \n"
+"IRCServer:                                                   \n"
+"                                                               \n"
+"Simple server program used to communicate multiple users       \n"
+"                                                               \n"
+"To use it in one window type:                                  \n"
+"                                                               \n"
+"   IRCServer <port>                                          \n"
+"                                                               \n"
+"Where 1024 < port < 65536.                                     \n"
+"                                                               \n"
+"In another window type:                                        \n"
+"                                                               \n"
+"   telnet <host> <port>                                        \n"
+"                                                               \n"
+"where <host> is the name of the machine where talk-server      \n"
+"is running. <port> is the port number you used when you run    \n"
+"daytime-server.                                                \n"
+"                                                               \n";
+
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <netdb.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include <time.h>
+#include <sstream>
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <algorithm>
+#include <map>
+
+#include "IRCServer.h"
+
+using namespace std;
+
+int QueueLength = 5;
 
 const char * usage =
 "                                                               \n"
