@@ -1,4 +1,4 @@
-char * usage =
+const char * usage =
 "                                                               \n"
 "IRCServer:                                                   \n"
 "                                                               \n"
