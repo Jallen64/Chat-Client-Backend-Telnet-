@@ -352,7 +352,7 @@ IRCServer::checkPassword(int fd, const char * user, const char * password) {
 	int i;
 	for (i=0; i < userVec.size();i++){
 
-		if( (userVec[i].compare(user) ==0 ) && (passVec[i].compare(password) ==0)){
+		if( (userVec.at(i).compare(user) ==0 ) && (passVec.at(i).compare(password) ==0)){
 
 			return true;
 
@@ -480,8 +480,8 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 		const char * msg =  "ERROR (No user in room)\r\n";
 		write(fd, msg, strlen(msg));
 		return;
-	}*/
-
+	}
+*/
 
 
 	//Has user leave room
