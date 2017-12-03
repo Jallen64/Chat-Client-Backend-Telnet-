@@ -480,7 +480,7 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 		string num;
 		ostringstream convert;
 		convert << i;
-		num = convert.argsS();
+		num = convert.str();
 
 
 		s= num + " " + it->second.messeges[i] + "\r\n";
