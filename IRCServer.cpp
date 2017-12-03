@@ -508,23 +508,13 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
         }
 	
 	const char *msg = "\r\n\0"  ;
-
         write(fd, msg, strlen(msg));
-
-	
 
 }
 
 	void
 IRCServer::getUsersInRoom(int fd, const char * user, const char * password, const char * args)
 {
-	/*if( !(checkPassword(fd, user, password)) ) {
-                const char * msg =  "ERROR (Wrong password)\r\n";
-                write(fd, msg, strlen(msg));
-                return;
-        }*/
-
-
 	string str(args);
 	string str2(user);
 
@@ -554,13 +544,6 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 	void
 IRCServer::getAllUsers(int fd, const char * user, const char * password,const  char * args)
 {
-	/*
-	if( !(checkPassword(fd, user, password)) ) {
-                const char * msg =  "ERROR (Wrong password)\r\n";
-                write(fd, msg, strlen(msg));
-                return;
-        }*/
-
 
 	sort( userVec.begin(), userVec.end() );
 	int i;
@@ -571,14 +554,11 @@ IRCServer::getAllUsers(int fd, const char * user, const char * password,const  c
 
 
 		const char *msg = s.c_str();	
-
 		write(fd, msg, strlen(msg));
 
 	}
 	const char *msg = "\r\n\0"  ;
-
 	write(fd, msg, strlen(msg));
-
 
 }
 
