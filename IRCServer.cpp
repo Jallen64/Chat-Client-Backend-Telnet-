@@ -462,11 +462,11 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 {	
 
 	string argsS(args);
-
+	
+	//Splits into roomName and number
 	int pos = argsS.find_first_of(' ');
 	string roomName = argsS.substr(pos+1);
 	string number = argsS.substr(0, pos);
-
 	int finalNumber = atoi(number.c_str());	
 
 	map<string, struct ROOM>::iterator it;
@@ -475,11 +475,10 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 	int i;
 	for( i =finalNumber+1; i< it->second.messeges.size() ; i++){
 
-		//Converts 
+		//bascially toString function since running on old version... 
 		ostringstream convert;
 		convert << i;
 		string num = convert.str();
-
 
 		string finalMessage= num + " " + it->second.messeges[i] + "\r\n";
 
@@ -496,19 +495,18 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 void
 IRCServer::getUsersInRoom(int fd, const char * user, const char * password, const char * args)
 {
-	string str(args);
+	string argsS(args);
 	string str2(user);
 
 	map<string, struct ROOM>::iterator it;
 
-	it=roomMap.find(str);
+	it=roomMap.find(argsS);
 	int i;
 	for( i =0; i < it->second.guestVec.size() ; i++){
 
 		sort( it->second.guestVec.begin(),it->second.guestVec.end() ); 
-		string s;
-
-		s= it->second.guestVec[i] + "\r\n";
+		
+		string s= it->second.guestVec[i] + "\r\n";
 
 		const char *msg = s.c_str();
 
