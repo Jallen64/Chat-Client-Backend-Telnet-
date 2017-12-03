@@ -436,10 +436,7 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 	}
 
 	//Then check if there even in a room
-	map<string, struct ROOM>::iterator itC2;
-	//itC2=roomMap.find(argsS);	
-
-	if( ( itC2.find(args) == itC2.end() ) ){
+	if( ( roomMap.find(args) == roomMap.end() ) ){
 
 		const char * msg =  "ERROR (No room)\r\n";
 		write(fd, msg, strlen(msg));
@@ -485,10 +482,9 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 	}
 
 	//Then check if there even in a room
-	map<string, struct ROOM>::iterator itC2;
-	//itC2=roomMap.find(argsS);	
+	
 
-	if( ( itC2.find(args) == itC2.end() ) ){
+	if( ( roomMap.find(args) == roomMap.end() ) ){
 
 		const char * msg =  "ERROR (No room)\r\n";
 		write(fd, msg, strlen(msg));
