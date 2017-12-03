@@ -424,6 +424,7 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 	string argsS(args);
 	string userS(user);
 
+/*
 	//First have to check that user is in room in the first place, if so doesnt add to guestVec
 	map<string, struct ROOM>::iterator itC;
 	itC=roomMap.find(argsS);	
@@ -433,7 +434,7 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 		return;
 	}
 
-
+*/
 
 	map<string, struct ROOM>::iterator it; //define iterator "it" suited for this type of map
 
