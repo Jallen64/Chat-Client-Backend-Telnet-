@@ -539,7 +539,7 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 	}
 
 	//If number doesn't exist
-	if (finalNumber > itC->second.messages.size()){
+	if (finalNumber >= itC->second.messages.size()){
 		const char * msg =  "NO-NEW-MESSAGES\r\n";
 		write(fd, msg, strlen(msg));
 		return;
