@@ -473,11 +473,10 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 IRCServer::getMessages(int fd, const char * user, const char * password, const char * args)
 {	
 
-
 	string str(args);
 
 	int pos = str.find_first_of(' ');
-	std::string roomName = str.substr(pos+1),
+	string roomName = str.substr(pos+1),
 	number = str.substr(0, pos);
 	
 	int finalNumber = atoi(number.c_str());	
