@@ -396,7 +396,7 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 	
 	map<string, struct ROOM>::iterator it; //define iterator "it" suited for this type of map
 
-	it=roomMap.find(argS);
+	it=roomMap.find(argsS);
 	it->second.guestVec.push_back(userS);// '->second' is needed to access attributes from the value at key
 
 	const char * msg =  "OK\r\n";
