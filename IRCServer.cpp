@@ -424,9 +424,22 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 	string argsS(args);
 	string userS(user);
 
+	//First have to check that user is in room in the first place, if so doesnt add to guestVec
+	map<string, struct ROOM>::iterator it;
+	it=roomMap.find(argsS);	
+
+	if( !(find(it->second.guestVec.begin(), it->second.guestVec.end(), userS) != it->second.guestVec.end()) ) {
+
+		return;
+	}
+
+
+
 	map<string, struct ROOM>::iterator it; //define iterator "it" suited for this type of map
 
 	it=roomMap.find(argsS);
+
+
 	it->second.guestVec.push_back(userS);// "->second" is needed to access attributes from the value at key
 
 	const char * msg =  "OK\r\n";
@@ -434,7 +447,7 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 
 }
 
-void
+	void
 IRCServer::leaveRoom(int fd, const char * user, const char * password, const char * args)
 {
 	if( checkPassword(fd, user, password) == false){	
@@ -467,7 +480,7 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 
 }
 
-void
+	void
 IRCServer::sendMessage(int fd, const char * user, const char * password, const char * args)
 {
 
