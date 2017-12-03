@@ -519,6 +519,7 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 		return;		
 	} 
 	string argsS(args);
+	string userS(user);
 
 	//Splits into roomName and number
 	int pos = argsS.find_first_of(' ');
