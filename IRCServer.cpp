@@ -475,17 +475,15 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 	int i;
 	for( i =finalNumber+1; i< it->second.messeges.size() ; i++){
 
-		string s;
-
-		string num;
+		//Converts 
 		ostringstream convert;
 		convert << i;
-		num = convert.str();
+		string num = convert.str();
 
 
-		s= num + " " + it->second.messeges[i] + "\r\n";
+		string finalMessage= num + " " + it->second.messeges[i] + "\r\n";
 
-		const char *msg = s.c_str();
+		const char *msg = finalMessage.c_str();
 		write(fd, msg, strlen(msg));
 
 	}
