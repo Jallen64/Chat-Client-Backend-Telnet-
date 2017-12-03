@@ -425,10 +425,10 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 	string userS(user);
 
 	//First have to check that user is in room in the first place, if so doesnt add to guestVec
-	map<string, struct ROOM>::iterator it;
-	it=roomMap.find(argsS);	
+	map<string, struct ROOM>::iterator itC;
+	itC=roomMap.find(argsS);	
 
-	if( !(find(it->second.guestVec.begin(), it->second.guestVec.end(), userS) != it->second.guestVec.end()) ) {
+	if( !(find(itC->second.guestVec.begin(), itC->second.guestVec.end(), userS) != itC->second.guestVec.end()) ) {
 
 		return;
 	}
