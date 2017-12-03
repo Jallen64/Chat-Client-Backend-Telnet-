@@ -293,7 +293,8 @@ IRCServer::processRequest( int fd )
 	close(fd);	
 }
 
-void printVec()
+void 
+IRCSERVER::printVec()
 {
     int i;
     for(i=0; i <userVec.size(); i++)
