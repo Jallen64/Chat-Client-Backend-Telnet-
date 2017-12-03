@@ -470,6 +470,10 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 void
 IRCServer::sendMessage(int fd, const char * user, const char * password, const char * args)
 {
+	
+	string argsS(args);
+	string userS(user);
+	
 	//First have to check that user is in room in the first place
 	map<string, struct ROOM>::iterator itC;
 	itC=roomMap.find(argsS);	
@@ -488,8 +492,6 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 		write(fd, msg, strlen(msg));
 		return;		
 	} 
-	string argsS(args);
-	string userS(user);
 
 	int pos = argsS.find_first_of(' ');//Splits args into "message" and "roomName"
 
