@@ -362,7 +362,7 @@ IRCServer::checkPassword(int fd, const char * user, const char * password) {
 	return false;
 }
 
-	void
+void
 IRCServer::addUser(int fd, const char * user, const char * password, const char * args)
 {
 	
@@ -470,6 +470,19 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 void
 IRCServer::sendMessage(int fd, const char * user, const char * password, const char * args)
 {
+	//First have to check that user is in room in the first place
+	map<string, struct ROOM>::iterator itC;
+	itC=roomMap.find(argsS);	
+
+	if( !(find(itC->second.guestVec.begin(), itC->second.guestVec.end(), userS) != itC->second.guestVec.end()) ) {
+
+		const char * msg =  "user not in room\r\n";
+		write(fd, msg, strlen(msg));
+		return;
+	}
+
+
+
 	if( checkPassword(fd, user, password) == false){	
 		const char * msg =  "ERROR (Wrong password)\r\n";
 		write(fd, msg, strlen(msg));
