@@ -408,11 +408,11 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 IRCServer::leaveRoom(int fd, const char * user, const char * password, const char * args)
 {
 
-	string str(args);
-	string str2(user);
+	string argsS(args);
+	string userS(user);
 
 	 map<string, struct ROOM>::iterator it;
-	 it=roomMap.find(str);	
+	 it=roomMap.find(argsS);	
 
 	 if(std::find(it->second.guestVec.begin(), it->second.guestVec.end(), str2) != it->second.guestVec.end()) {
 	
@@ -424,8 +424,8 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 
 	 map<string, struct ROOM>::iterator it2;
 
-	 it2=roomMap.find(str);
-	 it2->second.guestVec.erase(std::remove( it2->second.guestVec.begin(),  it2->second.guestVec.end(), str2),  it2->second.guestVec.end());
+	 it2=roomMap.find(argsS);
+	 it2->second.guestVec.erase(std::remove( it2->second.guestVec.begin(),  it2->second.guestVec.end(), userS),  it2->second.guestVec.end());
 
 	 const char * msg =  "OK\r\n";
 	 write(fd, msg, strlen(msg));
