@@ -41,6 +41,7 @@ using namespace std;
 
 int QueueLength = 5;
 
+//For notepad needs
 fstream reader;
 ofstream writer;
 
@@ -58,15 +59,13 @@ vector<struct ROOM> rooms;
 
 map<string, struct ROOM> roomMap;
 
-
+//For reading in args
 char * user;
 char * password;
 char * args;
 
 string hack;
 //test
-
-
 
 int
 IRCServer::open_server_socket(int port) {
@@ -251,6 +250,7 @@ IRCServer::processRequest( int fd )
 	
 	char* command = strtok(commandLine, " ");
 
+	//Tokenizing input into usable data
 	user = strtok(NULL, " ");
 	password = strtok(NULL, " ");
 	args = strtok(NULL, "");
@@ -331,7 +331,6 @@ IRCServer::initialize()
 
 bool
 IRCServer::checkPassword(int fd, const char * user, const char * password) {
-	// Here check the password
 	
 	int i;
 	for (i=0; i < userVec.size();i++){
@@ -445,12 +444,6 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 	void
 IRCServer::sendMessage(int fd, const char * user, const char * password, const char * args)
 {
-/*	if( !(checkPassword(fd, user, password)) ) {
-                const char * msg =  "ERROR (Wrong password)\r\n";
-                write(fd, msg, strlen(msg));
-                return;
-        }*/
-
 
 	string str(args);
 	string str2(user);
@@ -479,12 +472,6 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 	void
 IRCServer::getMessages(int fd, const char * user, const char * password, const char * args)
 {	
-
-/*	if( !(checkPassword(fd, user, password)) ) {
-                const char * msg =  "ERROR (Wrong password)\r\n";
-                write(fd, msg, strlen(msg));
-                return;
-        }*/
 
 
 	string str(args);
