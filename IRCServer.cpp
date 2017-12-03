@@ -538,7 +538,13 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 		return;
 	}
 
+	//If number doesn't exist
+	if (finalNumber > itC->second.messages.size()){
+		const char * msg =  "NO-NEW-MESSAGES\r\n";
+		write(fd, msg, strlen(msg));
+		return;
 
+	}
 
 	map<string, struct ROOM>::iterator it;
 	it=roomMap.find(roomName);
