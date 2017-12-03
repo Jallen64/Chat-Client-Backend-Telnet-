@@ -461,11 +461,11 @@ void
 IRCServer::getMessages(int fd, const char * user, const char * password, const char * args)
 {	
 
-	string str(args);
+	string argsS(args);
 
-	int pos = str.find_first_of(' ');
-	string roomName = str.substr(pos+1);
-	string number = str.substr(0, pos);
+	int pos = argsS.find_first_of(' ');
+	string roomName = argsS.substr(pos+1);
+	string number = argsS.substr(0, pos);
 
 	int finalNumber = atoi(number.c_str());	
 
@@ -480,13 +480,12 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 		string num;
 		ostringstream convert;
 		convert << i;
-		num = convert.str();
+		num = convert.argsS();
 
 
 		s= num + " " + it->second.messeges[i] + "\r\n";
 
 		const char *msg = s.c_str();
-
 		write(fd, msg, strlen(msg));
 
 	}
