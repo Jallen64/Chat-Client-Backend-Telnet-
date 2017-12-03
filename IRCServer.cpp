@@ -293,7 +293,14 @@ IRCServer::processRequest( int fd )
 	close(fd);	
 }
 
-	void
+void
+printVecs(){
+
+
+}
+
+
+void
 IRCServer::initialize()
 {
 	/*
@@ -328,9 +335,6 @@ IRCServer::initialize()
 
 bool
 IRCServer::checkPassword(int fd, const char * user, const char * password) {
-
-	string userS(user);
-	string passwordS(password);
 
 	int i;
 	for (i=0; i < userVec.size();i++){
@@ -372,7 +376,7 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 
 }
 
-	void
+void
 IRCServer::createRoom(int fd, const char * user, const char * password, const char * args)
 {
 	if( checkPassword(fd, user, password) == false){	
@@ -392,7 +396,7 @@ IRCServer::createRoom(int fd, const char * user, const char * password, const ch
 }
 
 
-	void
+void
 IRCServer::enterRoom(int fd, const char * user, const char * password, const char * args)
 {
 	if( checkPassword(fd, user, password) == false){	
@@ -446,7 +450,7 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 
 }
 
-	void
+void
 IRCServer::sendMessage(int fd, const char * user, const char * password, const char * args)
 {
 	if( checkPassword(fd, user, password) == false){	
@@ -473,7 +477,7 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 
 }
 
-	void
+void
 IRCServer::getMessages(int fd, const char * user, const char * password, const char * args)
 {	
 	if( checkPassword(fd, user, password) == false){	
@@ -512,7 +516,7 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 
 }
 
-	void
+void
 IRCServer::getUsersInRoom(int fd, const char * user, const char * password, const char * args)
 {
 	if( checkPassword(fd, user, password) == false){	
@@ -543,7 +547,7 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 
 }
 
-	void
+void
 IRCServer::getAllUsers(int fd, const char * user, const char * password,const  char * args)
 {
 	if( checkPassword(fd, user, password) == false){	
