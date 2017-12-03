@@ -300,14 +300,14 @@ IRCServer::printVec()
     for(i=0; i <userVec.size(); i++)
     {
 
-        cout << "This is the userVec: " << userVec[i] << " ";
+        cout << userVec[i] << " ";
     }
     cout <<endl;
     int j;
     for(j=0; j <passVec.size(); j++)
     {
 
-        cout << "This is the passVec: " <<  passVec[j] << " ";
+        cout <<  passVec[j] << " ";
     }
     cout <<endl;
 }
@@ -388,7 +388,6 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	const char * msg =  "OK\r\n";
 	write(fd, msg, strlen(msg));
 	
-	printVec();
 }
 
 void
