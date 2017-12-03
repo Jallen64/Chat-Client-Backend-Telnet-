@@ -470,7 +470,7 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 		write(fd, msg, strlen(msg));
 		return;
 	}
-
+/*
 	//Then check if there even in a room
 	map<string, struct ROOM>::iterator itC2;
 	itC2=roomMap.find(argsS);	
@@ -480,7 +480,7 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 		const char * msg =  "ERROR (No user in room)\r\n";
 		write(fd, msg, strlen(msg));
 		return;
-	}
+	}*/
 
 
 
