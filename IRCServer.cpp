@@ -470,21 +470,6 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 void
 IRCServer::sendMessage(int fd, const char * user, const char * password, const char * args)
 {
-	
-	string argsS(args);
-	string userS(user);
-	
-	//First have to check that user is in room in the first place
-	map<string, struct ROOM>::iterator itC;
-	itC=roomMap.find(argsS);	
-
-	if( !(find(itC->second.guestVec.begin(), itC->second.guestVec.end(), userS) != itC->second.guestVec.end()) ) {
-
-		const char * msg =  "user not in room\r\n";
-		write(fd, msg, strlen(msg));
-		return;
-	}
-
 
 
 	if( checkPassword(fd, user, password) == false){	
@@ -492,6 +477,22 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 		write(fd, msg, strlen(msg));
 		return;		
 	} 
+
+	string argsS(args);
+	string userS(user);
+
+	//First have to check that user is in room in the first place
+	map<string, struct ROOM>::iterator itC;
+	itC=roomMap.find(argsS);	
+
+	if( !(find(itC->second.guestVec.begin(), itC->second.guestVec.end(), userS) != itC->second.guestVec.end()) ) {
+
+		const char * msg =  "ERROR (user not in room)\r\n";
+		write(fd, msg, strlen(msg));
+		return;
+	}
+
+
 
 	int pos = argsS.find_first_of(' ');//Splits args into "message" and "roomName"
 
@@ -509,7 +510,7 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 
 }
 
-void
+	void
 IRCServer::getMessages(int fd, const char * user, const char * password, const char * args)
 {	
 	if( checkPassword(fd, user, password) == false){	
@@ -548,7 +549,7 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 
 }
 
-void
+	void
 IRCServer::getUsersInRoom(int fd, const char * user, const char * password, const char * args)
 {
 	if( checkPassword(fd, user, password) == false){	
@@ -579,7 +580,7 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 
 }
 
-void
+	void
 IRCServer::getAllUsers(int fd, const char * user, const char * password,const  char * args)
 {
 	if( checkPassword(fd, user, password) == false){	
