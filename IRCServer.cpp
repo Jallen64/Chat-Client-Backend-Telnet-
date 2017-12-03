@@ -524,7 +524,20 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 	int pos = argsS.find_first_of(' ');
 	string roomName = argsS.substr(pos+1);
 	string number = argsS.substr(0, pos);
-	int finalNumber = atoi(number.c_str());	
+	int finalNumber = atoi(number.c_str());
+
+	//First have to check that user is in room in the first place
+	map<string, struct ROOM>::iterator itC;
+	itC=roomMap.find(roomName);	
+
+	if( !(find(itC->second.guestVec.begin(), itC->second.guestVec.end(), userS) != itC->second.guestVec.end()) ) {
+
+		const char * msg =  "ERROR (User not in room)\r\n";
+		write(fd, msg, strlen(msg));
+		return;
+	}
+
+
 
 	map<string, struct ROOM>::iterator it;
 	it=roomMap.find(roomName);
