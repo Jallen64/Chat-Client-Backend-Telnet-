@@ -411,6 +411,7 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 	string argsS(args);
 	string userS(user);
 
+	//First have to check that user is in room in the first place
 	map<string, struct ROOM>::iterator it;
 	it=roomMap.find(argsS);	
 
@@ -420,18 +421,19 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 		write(fd, msg, strlen(msg));
 		return;
 	}
-
+	
+	//make user leave room
 	map<string, struct ROOM>::iterator it2;
 
 	it2=roomMap.find(argsS);
-	it2->second.guestVec.erase(std::remove( it2->second.guestVec.begin(),  it2->second.guestVec.end(), userS),  it2->second.guestVec.end());
+	it2->second.guestVec.erase(remove( it2->second.guestVec.begin(),  it2->second.guestVec.end(), userS),  it2->second.guestVec.end());
 
 	const char * msg =  "OK\r\n";
 	write(fd, msg, strlen(msg));
 
 }
 
-	void
+void
 IRCServer::sendMessage(int fd, const char * user, const char * password, const char * args)
 {
 
@@ -454,8 +456,6 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 
 	const char * msg =  "OK\r\n";
 	write(fd, msg, strlen(msg));
-	return;
-
 
 }
 
