@@ -443,7 +443,7 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 
 	int pos = argsS.find_first_of(' ');
 	string messege= argsS.substr(pos+1);
-	string roomName = argS.substr(0, pos);
+	string roomName = argsS.substr(0, pos);
 
 	string messegeFinal = userS + " " +messege;
 
