@@ -12,6 +12,7 @@ private:
 
 public:
 	void initialize();
+	void printVec();
 	bool checkPassword(int fd, const char * user, const char * password);
 	void processRequest( int socket );
 	void addUser(int fd, const char * user, const char * password, const char * args);
