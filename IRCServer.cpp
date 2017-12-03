@@ -397,7 +397,7 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 	map<string, struct ROOM>::iterator it; //define iterator "it" suited for this type of map
 
 	it=roomMap.find(argsS);
-	it->second.guestVec.push_back(userS);// '->second' is needed to access attributes from the value at key
+	it->second.guestVec.push_back(userS);// "->second" is needed to access attributes from the value at key
 
 	const char * msg =  "OK\r\n";
 	write(fd, msg, strlen(msg));
@@ -422,7 +422,7 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 		return;
 	}
 	
-	//make user leave room
+	//Has user leave room
 	map<string, struct ROOM>::iterator it2;
 
 	it2=roomMap.find(argsS);
@@ -437,22 +437,20 @@ void
 IRCServer::sendMessage(int fd, const char * user, const char * password, const char * args)
 {
 
-	string str(args);
-	string str2(user);
-	hack = str2;
+	string argS(args);
+	string userS(user);
+	hack = userS;
 
-	int pos = str.find_first_of(' ');
-	std::string messege= str.substr(pos+1),
-		roomName = str.substr(0, pos);
+	int pos = argsS.find_first_of(' ');
+	string messege= argsS.substr(pos+1);
+	string roomName = argS.substr(0, pos);
 
-	string messegeFinal = str2 + " " +messege;
+	string messegeFinal = userS + " " +messege;
 
 	map<string, struct ROOM>::iterator it;
 
 	it=roomMap.find(roomName);
 	it->second.messeges.push_back(messegeFinal);
-
-	cout << "First messege entered: " << it->second.messeges[0] << endl;
 
 	const char * msg =  "OK\r\n";
 	write(fd, msg, strlen(msg));
