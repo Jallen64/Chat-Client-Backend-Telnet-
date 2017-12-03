@@ -481,9 +481,15 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 	string argsS(args);
 	string userS(user);
 
+	int pos = argsS.find_first_of(' ');//Splits args into "message" and "roomName"
+
+	string message= argsS.substr(pos+1);
+	string roomName = argsS.substr(0, pos);
+	string messageFinal = userS + " " +message;
+
 	//First have to check that user is in room in the first place
 	map<string, struct ROOM>::iterator itC;
-	itC=roomMap.find(argsS);	
+	itC=roomMap.find(roomName);	
 
 	if( !(find(itC->second.guestVec.begin(), itC->second.guestVec.end(), userS) != itC->second.guestVec.end()) ) {
 
@@ -493,12 +499,6 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 	}
 
 
-
-	int pos = argsS.find_first_of(' ');//Splits args into "message" and "roomName"
-
-	string message= argsS.substr(pos+1);
-	string roomName = argsS.substr(0, pos);
-	string messageFinal = userS + " " +message;
 
 	map<string, struct ROOM>::iterator it;
 
