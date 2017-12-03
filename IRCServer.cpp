@@ -395,7 +395,7 @@ void
 IRCServer::createRoom(int fd, const char * user, const char * password, const char * args)
 {
 	if( checkPassword(fd, user, password) == false){	
-		const char * msg =  "ERROR (Wrong Password)\r\n";
+		const char * msg =  "ERROR (Wrong password)\r\n";
 		write(fd, msg, strlen(msg));
 		return;		
 	} 
@@ -417,7 +417,7 @@ void
 IRCServer::enterRoom(int fd, const char * user, const char * password, const char * args)
 {
 	if( checkPassword(fd, user, password) == false){	
-		const char * msg =  "ERROR (Wrong Password)\r\n";
+		const char * msg =  "ERROR (Wrong password)\r\n";
 		write(fd, msg, strlen(msg));
 		return;		
 	} 
@@ -434,11 +434,11 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 
 }
 
-	void
+void
 IRCServer::leaveRoom(int fd, const char * user, const char * password, const char * args)
 {
 	if( checkPassword(fd, user, password) == false){	
-		const char * msg =  "ERROR (Wrong Password)\r\n";
+		const char * msg =  "ERROR (Wrong password)\r\n";
 		write(fd, msg, strlen(msg));
 		return;		
 	} 
@@ -471,7 +471,7 @@ void
 IRCServer::sendMessage(int fd, const char * user, const char * password, const char * args)
 {
 	if( checkPassword(fd, user, password) == false){	
-		const char * msg =  "ERROR (Wrong Password)\r\n";
+		const char * msg =  "ERROR (Wrong password)\r\n";
 		write(fd, msg, strlen(msg));
 		return;		
 	} 
@@ -498,7 +498,7 @@ void
 IRCServer::getMessages(int fd, const char * user, const char * password, const char * args)
 {	
 	if( checkPassword(fd, user, password) == false){	
-		const char * msg =  "ERROR (Wrong Password)\r\n";
+		const char * msg =  "ERROR (Wrong password)\r\n";
 		write(fd, msg, strlen(msg));
 		return;		
 	} 
@@ -537,7 +537,7 @@ void
 IRCServer::getUsersInRoom(int fd, const char * user, const char * password, const char * args)
 {
 	if( checkPassword(fd, user, password) == false){	
-		const char * msg =  "ERROR (Wrong Password)\r\n";
+		const char * msg =  "ERROR (Wrong password)\r\n";
 		write(fd, msg, strlen(msg));
 		return;		
 	} 
@@ -568,7 +568,7 @@ void
 IRCServer::getAllUsers(int fd, const char * user, const char * password,const  char * args)
 {
 	if( checkPassword(fd, user, password) == false){	
-		const char * msg =  "ERROR (Wrong Password)\r\n";
+		const char * msg =  "ERROR (Wrong password)\r\n";
 		write(fd, msg, strlen(msg));
 		return;		
 	} 
