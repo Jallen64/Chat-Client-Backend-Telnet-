@@ -437,7 +437,7 @@ void
 IRCServer::sendMessage(int fd, const char * user, const char * password, const char * args)
 {
 
-	string argS(args);
+	string argsS(args);
 	string userS(user);
 	hack = userS;
 
