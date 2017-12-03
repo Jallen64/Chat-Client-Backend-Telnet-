@@ -329,10 +329,13 @@ IRCServer::initialize()
 bool
 IRCServer::checkPassword(int fd, const char * user, const char * password) {
 
+	string userS(user);
+	string passwordS(password);
+
 	int i;
 	for (i=0; i < userVec.size();i++){
 
-		if( (userVec[i].compare(user) ==0 ) && (passVec[i].compare(password) ==0)){
+		if( (userVec[i].compare(userS) ==0 ) && (passVec[i].compare(passwordS) ==0)){
 
 			return true;
 
