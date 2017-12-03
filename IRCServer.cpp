@@ -49,7 +49,7 @@ struct ROOM{
 
 	string name;
 	vector <string> guestVec;
-	vector <string> messeges;
+	vector <string> messages;
 
 };
 
@@ -63,9 +63,6 @@ map<string, struct ROOM> roomMap;
 char * user;
 char * password;
 char * args;
-
-string hack;
-//test
 
 int
 IRCServer::open_server_socket(int port) {
@@ -443,14 +440,14 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 	
 	int pos = argsS.find_first_of(' ');//Splits args into "message" and "roomName"
 	
-	string messege= argsS.substr(pos+1);
+	string massege= argsS.substr(pos+1);
 	string roomName = argsS.substr(0, pos);
-	string messegeFinal = userS + " " +messege;
+	string messageFinal = userS + " " +message;
 
 	map<string, struct ROOM>::iterator it;
 
 	it=roomMap.find(roomName);
-	it->second.messeges.push_back(messegeFinal);
+	it->second.messages.push_back(messageFinal);
 
 	const char * msg =  "OK\r\n";
 	write(fd, msg, strlen(msg));
@@ -473,14 +470,14 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 	it=roomMap.find(roomName);
 
 	int i;
-	for( i =finalNumber+1; i< it->second.messeges.size() ; i++){
+	for( i =finalNumber+1; i< it->second.messages.size() ; i++){
 
 		//bascially toString function since running on old version... 
 		ostringstream convert;
 		convert << i;
 		string num = convert.str();
 
-		string finalMessage= num + " " + it->second.messeges[i] + "\r\n";
+		string finalMessage= num + " " + it->second.messages[i] + "\r\n";
 
 		const char *msg = finalMessage.c_str();
 		write(fd, msg, strlen(msg));
