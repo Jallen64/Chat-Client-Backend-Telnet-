@@ -436,11 +436,10 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 
 	string argsS(args);
 	string userS(user);
-	hack = userS;
 	
 	int pos = argsS.find_first_of(' ');//Splits args into "message" and "roomName"
 	
-	string massege= argsS.substr(pos+1);
+	string massage= argsS.substr(pos+1);
 	string roomName = argsS.substr(0, pos);
 	string messageFinal = userS + " " +message;
 
