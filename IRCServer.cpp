@@ -293,10 +293,22 @@ IRCServer::processRequest( int fd )
 	close(fd);	
 }
 
-void
-printVecs(){
+void printVec()
+{
+    int i;
+    for(i=0; i <userVec.size(); i++)
+    {
 
+        cout << userVec[i] << " ";
+    }
+    cout <<endl;
+    int j;
+    for(j=0; j <passVec.size(); j++)
+    {
 
+        cout << passVec[j] << " ";
+    }
+    cout <<endl;
 }
 
 
