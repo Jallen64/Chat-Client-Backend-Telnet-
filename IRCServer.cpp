@@ -548,9 +548,7 @@ IRCServer::getAllUsers(int fd, const char * user, const char * password,const  c
 	sort( userVec.begin(), userVec.end() );
 	int i;
 	for(i=0; i<userVec.size();i++){
-		string s;	
-
-		s = userVec[i] + "\r\n" ;
+		string s = userVec[i] + "\r\n" ;
 
 
 		const char *msg = s.c_str();	
