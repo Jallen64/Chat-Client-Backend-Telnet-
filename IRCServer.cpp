@@ -437,7 +437,7 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 
 	//Then check if there even in a room
 	map<string, struct ROOM>::iterator itC2;
-	itC2=roomMap.find(argsS);	
+	//itC2=roomMap.find(argsS);	
 
 	if( ( itC2.find(args) == itC2.end() ) ){
 
@@ -486,7 +486,7 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 
 	//Then check if there even in a room
 	map<string, struct ROOM>::iterator itC2;
-	itC2=roomMap.find(argsS);	
+	//itC2=roomMap.find(argsS);	
 
 	if( ( itC2.find(args) == itC2.end() ) ){
 
