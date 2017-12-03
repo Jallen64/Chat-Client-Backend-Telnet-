@@ -377,10 +377,10 @@ IRCServer::createRoom(int fd, const char * user, const char * password, const ch
 {
 		
 	struct ROOM r;
-	string str(args);	
+	string args(args);	
 
-	r.name = str;
-	roomMap[str] = r;
+	r.name = args;
+	roomMap[args] = r;
 
 	const char * msg =  "OK\r\n";
 	write(fd, msg, strlen(msg));
@@ -408,13 +408,11 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 IRCServer::leaveRoom(int fd, const char * user, const char * password, const char * args)
 {
 
-
 	string str(args);
 	string str2(user);
 
-	 map<string, struct ROOM>::iterator it2;
-
-	 it2=roomMap.find(str);	
+	 map<string, struct ROOM>::iterator it;
+	 it=roomMap.find(str);	
 
 	 if(std::find(it2->second.guestVec.begin(), it2->second.guestVec.end(), str2) != it2->second.guestVec.end()) {
 	
@@ -424,16 +422,13 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 		 return;
 	 }
 
-	 map<string, struct ROOM>::iterator it;
+	 map<string, struct ROOM>::iterator it2;
 
-
-	 it=roomMap.find(str);
-	 it->second.guestVec.erase(std::remove( it->second.guestVec.begin(),  it->second.guestVec.end(), str2),  it->second.guestVec.end());
+	 it2=roomMap.find(str);
+	 it2->second.guestVec.erase(std::remove( it2->second.guestVec.begin(),  it2->second.guestVec.end(), str2),  it2->second.guestVec.end());
 
 	 const char * msg =  "OK\r\n";
 	 write(fd, msg, strlen(msg));
-	 return;
-
 
 }
 
