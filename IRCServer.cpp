@@ -365,7 +365,7 @@ IRCServer::checkPassword(int fd, const char * user, const char * password) {
 	void
 IRCServer::addUser(int fd, const char * user, const char * password, const char * args)
 {
-	printVec();
+	
 	//First checks to see if user has been added yet
 	int i;
 	for(i=0; i<userVec.size();i++){
@@ -387,7 +387,8 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 
 	const char * msg =  "OK\r\n";
 	write(fd, msg, strlen(msg));
-
+	
+	printVec();
 }
 
 void
