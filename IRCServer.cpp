@@ -391,13 +391,13 @@ IRCServer::createRoom(int fd, const char * user, const char * password, const ch
 IRCServer::enterRoom(int fd, const char * user, const char * password, const char * args)
 {
 
-        string str(args);
-	string str2(user);
+        string argsS(args);
+	string userS(user);
 	
 	map<string, struct ROOM>::iterator it; //define iterator "it" suited for this type of map
 
-	it=roomMap.find(str);
-	it->second.guestVec.push_back(str2);// '->second' is needed to access attributes from the value at key
+	it=roomMap.find(argS);
+	it->second.guestVec.push_back(userS);// '->second' is needed to access attributes from the value at key
 
 	const char * msg =  "OK\r\n";
         write(fd, msg, strlen(msg));
