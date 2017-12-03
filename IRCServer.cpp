@@ -348,6 +348,7 @@ IRCServer::checkPassword(int fd, const char * user, const char * password) {
 void
 IRCServer::addUser(int fd, const char * user, const char * password, const char * args)
 {
+	//First checks to see if user has been added yet
 	int i;
 	for(i=0; i<userVec.size();i++){
 
@@ -359,7 +360,7 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 		}
 	}
 
-
+	//Adds user(be sure to convert to string first)
 	string userS(user);
 	string passS(password);
 	
