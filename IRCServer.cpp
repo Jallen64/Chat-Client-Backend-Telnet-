@@ -493,7 +493,7 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 
 }
 
-	void
+void
 IRCServer::getUsersInRoom(int fd, const char * user, const char * password, const char * args)
 {
 	string str(args);
@@ -522,7 +522,7 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 
 }
 
-	void
+void
 IRCServer::getAllUsers(int fd, const char * user, const char * password,const  char * args)
 {
 
