@@ -342,7 +342,7 @@ IRCServer::checkPassword(int fd, const char * user, const char * password) {
 	return false;
 }
 
-void
+	void
 IRCServer::addUser(int fd, const char * user, const char * password, const char * args)
 {
 	//First checks to see if user has been added yet
@@ -369,9 +369,14 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 
 }
 
-void
+	void
 IRCServer::createRoom(int fd, const char * user, const char * password, const char * args)
 {
+	if( checkPassword(fd, user, password) == false){	
+		const char * msg =  "ERROR (Wrong Password)\r\n";
+		write(fd, msg, strlen(msg));
+		return;		
+	} 
 
 	struct ROOM r;
 	string argsS(args);	
@@ -384,10 +389,14 @@ IRCServer::createRoom(int fd, const char * user, const char * password, const ch
 }
 
 
-void
+	void
 IRCServer::enterRoom(int fd, const char * user, const char * password, const char * args)
 {
-
+	if( checkPassword(fd, user, password) == false){	
+		const char * msg =  "ERROR (Wrong Password)\r\n";
+		write(fd, msg, strlen(msg));
+		return;		
+	} 
 	string argsS(args);
 	string userS(user);
 
@@ -401,10 +410,14 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 
 }
 
-void
+	void
 IRCServer::leaveRoom(int fd, const char * user, const char * password, const char * args)
 {
-
+	if( checkPassword(fd, user, password) == false){	
+		const char * msg =  "ERROR (Wrong Password)\r\n";
+		write(fd, msg, strlen(msg));
+		return;		
+	} 
 	string argsS(args);
 	string userS(user);
 
@@ -418,7 +431,7 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 		write(fd, msg, strlen(msg));
 		return;
 	}
-	
+
 	//Has user leave room
 	map<string, struct ROOM>::iterator it2;
 
@@ -430,15 +443,19 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
 
 }
 
-void
+	void
 IRCServer::sendMessage(int fd, const char * user, const char * password, const char * args)
 {
-
+	if( checkPassword(fd, user, password) == false){	
+		const char * msg =  "ERROR (Wrong Password)\r\n";
+		write(fd, msg, strlen(msg));
+		return;		
+	} 
 	string argsS(args);
 	string userS(user);
-	
+
 	int pos = argsS.find_first_of(' ');//Splits args into "message" and "roomName"
-	
+
 	string message= argsS.substr(pos+1);
 	string roomName = argsS.substr(0, pos);
 	string messageFinal = userS + " " +message;
@@ -453,12 +470,16 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 
 }
 
-void
+	void
 IRCServer::getMessages(int fd, const char * user, const char * password, const char * args)
 {	
-
+	if( checkPassword(fd, user, password) == false){	
+		const char * msg =  "ERROR (Wrong Password)\r\n";
+		write(fd, msg, strlen(msg));
+		return;		
+	} 
 	string argsS(args);
-	
+
 	//Splits into roomName and number
 	int pos = argsS.find_first_of(' ');
 	string roomName = argsS.substr(pos+1);
@@ -488,9 +509,14 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
 
 }
 
-void
+	void
 IRCServer::getUsersInRoom(int fd, const char * user, const char * password, const char * args)
 {
+	if( checkPassword(fd, user, password) == false){	
+		const char * msg =  "ERROR (Wrong Password)\r\n";
+		write(fd, msg, strlen(msg));
+		return;		
+	} 
 	string argsS(args);
 	string str2(user);
 
@@ -501,7 +527,7 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 	for( i =0; i < it->second.guestVec.size() ; i++){
 
 		sort( it->second.guestVec.begin(),it->second.guestVec.end() ); 
-		
+
 		string s= it->second.guestVec[i] + "\r\n";
 
 		const char *msg = s.c_str();
@@ -514,7 +540,7 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 
 }
 
-void
+	void
 IRCServer::getAllUsers(int fd, const char * user, const char * password,const  char * args)
 {
 	if( checkPassword(fd, user, password) == false){	
