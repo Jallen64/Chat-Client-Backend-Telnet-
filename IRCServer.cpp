@@ -387,7 +387,8 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 
 	const char * msg =  "OK\r\n";
 	write(fd, msg, strlen(msg));
-	
+
+	printVec();	
 }
 
 void
@@ -407,6 +408,8 @@ IRCServer::createRoom(int fd, const char * user, const char * password, const ch
 
 	const char * msg =  "OK\r\n";
 	write(fd, msg, strlen(msg));
+	
+	printVec();
 }
 
 
@@ -583,5 +586,6 @@ IRCServer::getAllUsers(int fd, const char * user, const char * password,const  c
 	const char *msg = "\r\n\0"  ;
 	write(fd, msg, strlen(msg));
 
+	printVec();
 }
 
