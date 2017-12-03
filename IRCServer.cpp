@@ -294,7 +294,7 @@ IRCServer::processRequest( int fd )
 }
 
 void 
-IRCSERVER::printVec()
+IRCServer::printVec()
 {
     int i;
     for(i=0; i <userVec.size(); i++)
