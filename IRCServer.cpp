@@ -653,7 +653,7 @@ IRCServer::getAllUsers(int fd, const char * user, const char * password,const  c
 	
 	for(k=0;k<userVec.size();k++){
 		
-		tempVec.push_back(userVec[i]);
+		tempVec.push_back(userVec[k]);
 	
 	} 
 
