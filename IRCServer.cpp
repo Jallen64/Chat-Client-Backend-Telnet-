@@ -352,7 +352,7 @@ IRCServer::checkPassword(int fd, const char * user, const char * password) {
 	int i;
 	for (i=0; i < userVec.size();i++){
 
-		if( (strcmp(user,userVec[i]) ==0 ) && (strcmp(password,passVec[i]) ==0)){
+		if( (strcmp(user,userVec[i].c_str()) ==0 ) && (strcmp(password,passVec[i].c_str()) ==0)){
 
 			return true;
 
