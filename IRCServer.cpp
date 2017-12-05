@@ -645,13 +645,23 @@ IRCServer::getAllUsers(int fd, const char * user, const char * password,const  c
 		const char * msg =  "ERROR (Wrong password)\r\n";
 		write(fd, msg, strlen(msg));
 		return;		
+	}
+
+	vector<string> tempVec;
+
+	int k;
+	
+	for(k=0;k<userVec.size();k++){
+		
+		tempVec.push_back(userVec[i]);
+	
 	} 
 
-	sort( userVec.begin(), userVec.end() );
+	sort( tempVec.begin(), tempVec.end() );
 
 	int i;
-	for(i=0; i<userVec.size();i++){
-		string s = userVec[i] + "\r\n" ;
+	for(i=0; i<tempVec.size();i++){
+		string s = tempVec[i] + "\r\n" ;
 
 		const char *msg = s.c_str();	
 		write(fd, msg, strlen(msg));
